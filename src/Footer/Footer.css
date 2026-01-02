@@ -10,8 +10,8 @@ footer{
     display: flex;
     justify-content: space-around;
     margin-top: 50px;
-    gap: 50px;
-    margin-right: 60px;
+    gap: 70px;
+    margin-right: 50px;
 }
 footer hr {
     position: absolute;
@@ -24,9 +24,13 @@ bottom:30%;
 }
 
 .leftfoot{
+    width: 325px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+.center{
+    width: 330px;
 }
  .ph strong{
     color:#54c273;
@@ -59,7 +63,7 @@ bottom:30%;
     height: 45px;
 }
 .app{
-    width: 100px;
+    width: 325px;
     display: flex;
     gap: 3px;
     flex-direction: column;
@@ -73,8 +77,8 @@ bottom:30%;
 }
 .multi{
     margin-top: 80px;
-     gap: 180px;
-    margin-right: 80px;
+     gap: 80px;
+    margin-right: 150px;
     display: flex;
     justify-content: space-around;
 }

@@ -15,7 +15,7 @@ export default function Navmenu({Language}) {
         <span>Theaters & Art</span>
         <span>Sport</span>
         <span>Others</span>
-        <span>Vé bán lại</span>
+        <span>Resale ticket</span>
       </nav>
       )
       }

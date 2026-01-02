@@ -6,13 +6,13 @@ import Header from './Head/Header.jsx'
 import Maincontent from './Maincontent/Maincontent.jsx';
 import Footer from './Footer/Footer.jsx';
 function App() {
-  const[Language,Setlanguage]=useState("vi");
+  const[Language,setLanguage]=useState("vi");
   return ( 
    <>
-    <Header Language={Language} Setlanguage={Setlanguage}></Header>
+    <Header Language={Language} Setlanguage={setLanguage}></Header>
     <Navmenu Language={Language} ></Navmenu>
     <Maincontent Language={Language}></Maincontent>
-    <Footer Language={Language}/>
+    <Footer Language={Language} Setlanguage={setLanguage}/>
    </>
   )
 }

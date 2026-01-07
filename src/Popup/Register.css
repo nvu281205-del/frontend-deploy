@@ -1,0 +1,93 @@
+.Regisdialog{
+    margin-top: 70px;
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+}
+.regisstart{
+    position: relative;
+    padding: 20px 120px 20px 120px;
+    background-color: rgb(45, 194, 117);
+}
+.regisstart span{
+    font-size: 20px;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.closebutton{
+  position: absolute;
+    top: 10px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+   background-color:transparent;
+   padding: 0px 0px 1px 0px;
+}
+.regisgoing{
+    padding: 30px;
+}
+.valispace{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.validate{
+    border: red 1px solid ;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+.testvalidate{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    background-color: rgb(255, 66, 78);;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+.validating{
+    align-items: center;
+    display: flex;
+    gap: 2px;
+}
+.validating p{
+color:     rgb(217, 56, 67);
+font-size: 14px;
+font-weight: bold;
+font-family:Arial, Helvetica, sans-serif;
+}
+.testvalidatemn{
+     display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 8px;
+    background-color: rgb(255, 66, 78);;
+    width: 11px;
+    height: 11px;
+    border-radius: 100%;
+}
+.validatingmn{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    align-items: center;
+    display: flex;
+    gap: 3px; 
+}
+.login{
+   margin-top: 10px;
+   cursor: pointer;
+   width: 100%;
+   padding: 10px;
+   background-color: rgb(221, 221, 227);
+   border: none;
+   border-radius: 3px;
+   font-size: 17px;
+   color:rgb(108, 110, 112);
+   font-family:Arial, Helvetica, sans-serif
+}

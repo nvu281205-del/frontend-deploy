@@ -5,9 +5,11 @@ import vietnamIcon from "../assets/vietnamIcon.webp"
 import englishIcon from "../assets/englishIcon.png"
 import {useRef, useState} from "react"
 import Login from "../Popup/Login"
+import Register from "../Popup/Register"
 export default function Header({Setlanguage,Language}) {//Destructering props để truyền thuộc tính  
   const[change,setChange]=useState("")
-  const dialogRef=useRef()
+  const loginRef=useRef();
+  const regisRef=useRef();
   function handleChange(e){
     setChange(e.target.value);
   }
@@ -34,12 +36,13 @@ export default function Header({Setlanguage,Language}) {//Destructering props đ
                     </div>
                     <div className="Login">
                      
-                     <button onClick={()=>dialogRef.current.showModal()}>{Language==="vi"?'Đăng nhập':'Login'}</button>
+                     <button onClick={()=>loginRef.current.showModal()}>{Language==="vi"?'Đăng nhập':'Login'}</button>
                      <span></span>
-                     <button onClick={()=>dialogRef.current.showModal()}>{Language==="vi"?'Đăng ký':'Register'}</button>    
+                     <button onClick={()=>loginRef.current.showModal()}>{Language==="vi"?'Đăng ký':'Register'}</button>    
                
                     </div>
-                    <Login ref={dialogRef}/>
+                    <Login ref={loginRef} registerRef={regisRef}/>
+                    <Register ref={regisRef} loginRef={loginRef}/>
 
                     <div className="Language">
                 {Language==="vi"? <img src={vietnamIcon} alt="Vietnam" />: <img src={englishIcon} alt="English" />}   

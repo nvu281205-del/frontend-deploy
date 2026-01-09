@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {data2} from './data.js'
 import Thumb from './Thumb.jsx'
-export default function Special ({Language,titleEn,titleVi}){
+import { LanguageContext } from "../Context.jsx";
+import axios from "axios";
+export default function Special ({titleEn,titleVi,category}){
+  const[event,setEvent]=useState([]);
+   useEffect(()=>{
+     axios.get(`http://localhost:3000/events?category=${category}`)
+     .then(res=>setEvent(res.data))
+    .catch(err=>console.log(err))
+    },[category])
+      const Language=useContext(LanguageContext);
      const [thumbIndex, setThumbIndex] = useState(0);
      const VisibleThumb = data2.slice(thumbIndex,thumbIndex+5);
     return (
@@ -9,7 +18,7 @@ export default function Special ({Language,titleEn,titleVi}){
             <div className="Thumb">
         <span className="topic">{Language==="vi"?titleVi:titleEn}</span>
             <div className="thumb-images">
-    {VisibleThumb.map((item)=>(<Thumb {...item} key={item.title}/>))}
+    {event.map((item)=>(<Thumb {...item} key={item.title}/>))}
     {thumbIndex>0&&( <button className="prev-button" onClick={()=>setThumbIndex((thumbIndex)=>{
       if(thumbIndex-4<0){
         return 0;

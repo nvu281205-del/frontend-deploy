@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import Content from "../Maincontent/Content";
 import './MoreConTent.css'
 import GridContent from "./GridContent";
-export default function MoreContent({Language}){
+export default function MoreContent(){
     const {titleSearch}= useParams();
     const[data,setData]=useState([]);
     useEffect(()=>{
@@ -14,7 +14,7 @@ export default function MoreContent({Language}){
     return (
         <>
         <div className="contain">
-       <GridContent data={data} Language={Language}/>
+       <GridContent data={data}/>
        </div> 
         </>
     )

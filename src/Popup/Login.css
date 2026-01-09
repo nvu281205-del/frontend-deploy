@@ -39,11 +39,11 @@
 }
 .input {
     align-items: center;
-     display: flex;
+    display: flex;
     gap: 20px;
     flex-direction: column;
 }
- .inputtype input {
+ .form-input input {
     font-size: 15px;
     width: 320px;
     
@@ -53,7 +53,7 @@ input:-webkit-autofill {
     color: black !important; 
     -webkit-box-shadow: 0 0 0px 1000px white inset; 
  }
-.inputtype{
+.form-input{
     position: relative;
     padding: 3px 5px 3px 10px;
     width: 95%;
@@ -62,7 +62,7 @@ input:-webkit-autofill {
    display: flex;
    align-items: center;
 }
-.inputtype svg{
+.form-input svg{
     color: rgb(162, 157, 157);
     position: absolute;
     right: 8px;

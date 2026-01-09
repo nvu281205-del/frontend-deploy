@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Content from './Content.jsx'
-import {TM,TW} from './data.js'
 import axios from "axios";
-export default function ThisWeekend({Language,category1,category2}){
+import { Link } from 'react-router-dom';
+import { LanguageContext } from "../Context.jsx";
+export default function ThisWeekend({category1,category2}){
+   const Language=useContext(LanguageContext);
    const[date,setDate]=useState("Weekend"); 
   const category=date==="Weekend"?category1:category2
       const [event,setEvent]=useState([])
@@ -18,7 +20,12 @@ export default function ThisWeekend({Language,category1,category2}){
                     <span onClick={()=>setDate("Weekend")}>{Language==="vi"?"Cuối tuần này":"This weekend"}</span>
                       <span onClick={()=>setDate("Month")}>{Language==="vi"?"Tháng này":"This month"}</span>
                          <div className={date==="Month"?"greenlineM":"greenlineW"}></div> 
-                         <div className="Detail">  <span>{Language==="vi"?"Xem thêm":"View more"}</span> <span style={{fontSize:"25px",marginBottom:"5px"}}>&#8250;</span>    </div>
+      <Link to={`MoreContent/${category}`} className="link">
+       <div className="Detail">
+        <span>{Language==="vi"?"Xem thêm":"View more"}</span>
+      <span style={{fontSize:"25px",marginBottom:"5px"}}>&#8250;</span>
+      </div>  
+      </Link>
                   </div>
                  <div style={{display:"flex", gap:"10px",justifyContent:"center",marginTop:"10px"}}>
                      {event.map((i)=>(<Content {...i} key={i.title}/>))}

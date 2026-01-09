@@ -1,8 +1,11 @@
 import {FY} from './data.js'
 import Content from "./Content.jsx";
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-export default function ForYou({Language,titleEn,titleVi,category}){
+import { useContext, useEffect, useState } from 'react';
+
+import { LanguageContext } from '../Context.jsx';
+export default function ForYou({titleEn,titleVi,category}){
+const Language=useContext(LanguageContext);
 const[data,setData]=useState([])
 useEffect(()=>{
     axios.get(`http://localhost:3000/events?category=${category}`)

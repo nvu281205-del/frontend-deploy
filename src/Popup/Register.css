@@ -1,9 +1,10 @@
-.Regisdialog{
+.Register-dialog{
     margin-top: 70px;
     padding: 0;
     border-radius: 10px;
     border: none;
 }
+
 /* Với Edge/IE */
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
@@ -15,18 +16,18 @@ input[type="password"]::-webkit-textfield-decoration-container {
   display: none;
 }
 
-.regisstart{
+.Register-header{
     position: relative;
     padding: 20px 120px 20px 120px;
     background-color: rgb(45, 194, 117);
 }
-.regisstart span{
+.Register-header span{
     font-size: 20px;
     color: white;
     font-family:Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
-.closebutton{
+.Register-closebtn{
   position: absolute;
     top: 10px;
     right: 5px;
@@ -37,28 +38,52 @@ input[type="password"]::-webkit-textfield-decoration-container {
    background-color:transparent;
    padding: 0px 0px 1px 0px;
 }
-.regisgoing{
+.Register-body{
     padding: 30px;
 }
-.valispace{
+.form-field{
+    width: 100%;
+}
+.form-input{
+    position: relative;
+    padding: 3px 5px 3px 10px;
+    width: 95%;
+     border-radius: 3px;
+   border:1px solid rgb(129, 122, 122);
+   display: flex;
+   align-items: center;
+}
+.form-input.input-valid{
+   border:1px solid rgb(21, 110, 189);
+}
+.form-input.input-error{
+   border:1px solid #ff4d4f
+}
+.form-error{
+    margin-top: 3px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#ff4d4f;
+}
+.password-rules{
     display: flex;
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.notvalidate{
+.passrules-invalid{
     border: red 1px solid ;
     border-radius: 5px;
     padding: 10px;
     width: 100%;
 }
-.isvalidate{
-    border: rgb(45, 194, 117);;
+.passrules-valid{
+    border: rgb(45, 194, 117) solid 1px;
     border-radius: 5px;
     padding: 10px;
     width: 100%;
 }
-.testnotvalid{
+.icon-invalid{
     display: flex;
     justify-content: center;
     color: white;
@@ -68,7 +93,7 @@ input[type="password"]::-webkit-textfield-decoration-container {
     height: 15px;
     border-radius: 100%;
 }
-.testvalid{
+.icon-valid{
      display: flex;
     justify-content: center;
     color: white;
@@ -78,18 +103,18 @@ input[type="password"]::-webkit-textfield-decoration-container {
     height: 15px;
     border-radius: 100%;
 }
-.validating{
+.pass-summary{
     align-items: center;
     display: flex;
     gap: 2px;
 }
-.validating p{
-color:     rgb(217, 56, 67);
+.pass-summary p{
+color: rgb(217, 56, 67);
 font-size: 14px;
 font-weight: bold;
 font-family:Arial, Helvetica, sans-serif;
 }
-.notvalid{
+.rule-invalid{
      display: flex;
     justify-content: center;
     color: white;
@@ -99,7 +124,7 @@ font-family:Arial, Helvetica, sans-serif;
     height: 11px;
     border-radius: 100%;
 }
-.isvalid{
+.rule-valid{
      display: flex;
     justify-content: center;
     color: white;
@@ -109,14 +134,14 @@ font-family:Arial, Helvetica, sans-serif;
     height: 11px;
     border-radius: 100%;
 }
-.validatingmn{
+.pass-rule{
     margin-bottom: 10px;
     margin-left: 10px;
     align-items: center;
     display: flex;
     gap: 3px; 
 }
-.login{
+.loginbtn{
    margin-top: 10px;
    cursor: pointer;
    width: 100%;
@@ -126,5 +151,12 @@ font-family:Arial, Helvetica, sans-serif;
    border-radius: 3px;
    font-size: 17px;
    color:rgb(108, 110, 112);
-   font-family:Arial, Helvetica, sans-serif
+   font-family:Arial, Helvetica, sans-serif;
+}
+.loginbtn.enable{
+     background-color: rgb(45, 194, 117);
+     color: white;
+}
+.loginbtn.disable{
+    cursor:not-allowed;
 }

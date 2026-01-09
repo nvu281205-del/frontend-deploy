@@ -19,7 +19,7 @@ function App() {
     <Routes>
         <Route path="/" element={ <>
            <Navmenu Language={Language} ></Navmenu>
-          <Maincontent Language={Language}/> 
+          <Maincontent/> 
           </>}/>
       <Route path="/MoreConTent/:titleSearch" element={<MoreConTent Language={Language}/>}/>
     </Routes>

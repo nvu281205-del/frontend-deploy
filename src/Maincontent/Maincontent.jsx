@@ -9,19 +9,19 @@ import ForYou from "./ForYou"
 import ThisWeekend from "./ThisWeekend"
 import VP from "./VP";
 import Cities from "./Cities";
-export default function Maincontent({Language}) { 
+export default function Maincontent() { 
     return (
           <main>
-        <Banner  Language={Language} /> 
-        <Special Language={Language} category='Special'titleEn='Special events' titleVi='Sự kiện đặc biệt'/>
-        <ForYou  Language={Language} category='ForYou' titleEn='Top picks for you' titleVi='Dành cho bạn'/>
-        <ThisWeekend  Language={Language} category1='ThisWeekend' category2='ThisMonth' />
+        <Banner  /> 
+        <Special category='Special'titleEn='Special events' titleVi='Sự kiện đặc biệt'/>
+        <ForYou  category='ForYou' titleEn='Top picks for you' titleVi='Dành cho bạn'/>
+        <ThisWeekend  category1='ThisWeekend' category2='ThisMonth' />
         <VP/>
-       <Section Language={Language} category='Music' titleEn="Music" titleVi="Nhạc sống"/>
-       <Section Language={Language} category='TheaterandArt' titleEn="Theater & Art" titleVi="Sân khấu và nghệ thuật"/>
-       <Section Language={Language} category='AttandExp' titleEn="Attraction & Experience" titleVi="Tham quan và trải nghiệm"/>
-       <Section Language={Language} category='Others' titleEn="Others" titleVi="Thể loại khác"/>
-        <Cities  Language={Language} category='City' titleEn="Exciting Destination" titleVi="Điểm đến thú vị"/>  
+       <Section category='Music' titleEn="Music" titleVi="Nhạc sống"/>
+       <Section category='TheaterandArt' titleEn="Theater & Art" titleVi="Sân khấu và nghệ thuật"/>
+       <Section category='AttandExp' titleEn="Attraction & Experience" titleVi="Tham quan và trải nghiệm"/>
+       <Section category='Others' titleEn="Others" titleVi="Thể loại khác"/>
+        <Cities  category='City' titleEn="Exciting Destination" titleVi="Điểm đến thú vị"/>  
         </main>
         
     )

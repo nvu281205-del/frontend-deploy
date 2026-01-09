@@ -1,5 +1,8 @@
 import "./City.css"
-export default function City({imgSrc,title,titleEn,Language}){
+import { LanguageContext } from "../Context";
+import { useContext } from "react";
+export default function City({imgSrc,title,titleEn}){
+     const Language=useContext(LanguageContext);
     return(
         <>
         <div className="cityBanner">

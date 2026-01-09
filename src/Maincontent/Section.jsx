@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Content from "./Content"
 import axios from "axios";
-export default function Section({titleEn,titleVi,Language,category}){
+import { Link } from 'react-router-dom';
+import { LanguageContext } from "../Context";
+export default function Section({titleEn,titleVi,category}){
+     const Language=useContext(LanguageContext);
     let index=0;
     const [event,setEvent]=useState([])
      useEffect(()=>{
@@ -15,7 +18,13 @@ export default function Section({titleEn,titleVi,Language,category}){
     <span className="topic">{Language==="vi"?titleVi:titleEn}</span>
         <div style={{display:"flex", gap:"10px",justifyContent:"center",marginTop:"10px"}}>
         {event.slice(index,index+4).map((i)=>(<Content {...i} key={i.id}/>))}</div>
-        <div className="Detail"><span>{Language==="vi"?"Xem thêm":"View more"}</span><span style={{fontSize:"25px",marginBottom:"5px"}}>&#8250;</span></div>    
+      <Link to={`MoreContent/${category}`} className="link">
+       <div className="Detail">
+        <span>{Language==="vi"?"Xem thêm":"View more"}</span>
+      <span style={{fontSize:"25px",marginBottom:"5px"}}>&#8250;</span>
+      </div>  
+      </Link>
+         
         </div>
         </>
     )

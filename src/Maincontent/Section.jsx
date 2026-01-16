@@ -21,13 +21,13 @@ export default function Section({titleEn,titleVi,category}){
             <Link className="link" to={`/Detail/${i.id}`} key={i.id}> <Content {...i}/></Link>
            
             ))}</div>
-      <Link to={`MoreContent/${category}`} className="link">
+      <Link to={`MoreContent?category=${category}`} className="link">
        <div className="Detail">
         <span>{Language==="vi"?"Xem thêm":"View more"}</span>
       <span style={{fontSize:"25px",marginBottom:"5px"}}>&#8250;</span>
       </div>  
       </Link>
-         
+    
         </div>
         </>
     )

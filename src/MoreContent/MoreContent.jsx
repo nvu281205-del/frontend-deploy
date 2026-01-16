@@ -5,7 +5,7 @@ import './MoreConTent.css'
 import GridContent from "./GridContent";
 import empty from "/empty.webp"
 export default function MoreContent(){
-   
+    const[recommend,setRecommend]=useState([])
     const[data,setData]=useState([]);
     const location=useLocation();
     const param=new URLSearchParams(location.search);
@@ -13,6 +13,7 @@ export default function MoreContent(){
     const category =param.get('category');
     const [showForm, setShowForm] = useState(false);
     const formRef=useRef();
+    
     useEffect(() => { 
         function handleClickOutside(event) { 
         if (formRef.current && !formRef.current.contains(event.target)) {
@@ -33,6 +34,11 @@ return () => {
      .then(res=>res.json())
      .then(json=>setData(json));
     },[category,title])
+    useEffect(() => {
+    fetch("http://localhost:3000/events?category=Recommend")
+      .then(res => res.json())
+      .then(json => setRecommend(json));
+  }, []);
     return (
         <>
         <div className="morecontent">
@@ -81,14 +87,25 @@ return () => {
         </div>
         </div>
        {data.length === 0 && (
+          <>
   <div className="empty">
     <img src={empty} alt="empty" />
     <span>Rất tiếc! Không tìm thấy kết quả nào</span>
+    <p>Bạn hãy thử điều chỉnh lại bộ lọc, sử dụng các từ khóa phổ biến hơn hoặc khám phá các sự kiện nổi bật bên dưới</p>
   </div>
+  
+      <div className="Recommend">
+  <span>Gợi ý dành cho bạn</span>
+  <div className="recomcontent">    
+         <GridContent data={recommend}/>  
+       </div>
+       </div>
+       </>
 )}
         <div className="contain">
        <GridContent data={data}/>
        </div>
+       
        </div> 
         </>
     )

@@ -25,8 +25,6 @@ export default function Maincontent() {
        <Section category='AttandExp' titleEn="Attraction & Experience" titleVi="Tham quan và trải nghiệm"/>
        <Section category='Others' titleEn="Others" titleVi="Thể loại khác"/>
         <Cities  category='City' titleEn="Exciting Destination" titleVi="Điểm đến thú vị"/>  
-        <BuyTicket/>
-       
         </main>
         
     )

@@ -1,6 +1,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../Context";
+import {Link} from "react-router-dom"
 import axios from "axios";
 
 export default function Detailticket({id}){
@@ -47,14 +48,14 @@ export default function Detailticket({id}){
          <div>
         <span>{eventid.title}</span>
         <div className='detailadd'>
-            799 Đường Nguyễn Văn Linh, Phường Tân Phong, Quận 7, Thành Phố Hồ Chí Minh
+            {eventid.locate}
         </div>
         </div>
         </div>
         <div className="detailprice">
            <span>{eventid.baseprice}đ</span>
         </div>
-        <button className="buyticket">Mua vé ngay</button>
+       <Link to={`/BuyTicket/${id}`}> <button className="buyticket">Mua vé ngay</button></Link>
         </div>  
        
        <div  className='detailpic'>

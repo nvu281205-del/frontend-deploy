@@ -8,7 +8,7 @@ import Login from "../Popup/Login"
 import Register from "../Popup/Register"
 import SearchContent from "./SearchContent"
 import { Link } from "react-router-dom"
-export default function Header({Setlanguage,Language}) {//Destructering props để truyền thuộc tính  
+export default function Header({Setlanguage,Language}) {
   const loginRef=useRef();
   const regisRef=useRef();
   const formRef=useRef()
@@ -31,7 +31,7 @@ export default function Header({Setlanguage,Language}) {//Destructering props đ
                     <div className="search-container">
                              <img id="searchIcon" src={searchIcon} alt="search" />
                         {Language==="vi"?    
-                        (<><input onChange={(e)=>setQuerySearch(e.target.value)} value={querysearch} onClick={()=>setShowForm(!showForm)} type="text" placeholder="Bạn tìm gì hôm nay?"/>
+                        (<><input onChange={(e)=>setQuerySearch(e.target.value)} value={querysearch} onClick={()=>setShowForm(showForm=>!showForm)} type="text" placeholder="Bạn tìm gì hôm nay?"/>
                         <span ></span>
                     <Link to={`/MoreConTent?title=${encodeURIComponent(querysearch)}`}> <button >Tìm kiếm</button></Link> </>): (<><input type="text" placeholder="What are you looking for?"/>
                         <span ></span>

@@ -10,6 +10,7 @@ import MoreConTent from "./MoreContent/MoreContent.jsx"
 import { LanguageContext } from './Context.jsx';
 import Detail from './Detail/Detail.jsx';
 import MoreContent from './MoreContent/MoreContent.jsx';
+import BuyTicket from './BuyTicket/BuyTicket.jsx';
 function App() {
   const[Language,setLanguage]=useState("vi");
   return ( 
@@ -39,6 +40,15 @@ function App() {
        <Footer Language={Language} Setlanguage={setLanguage}/>
       </>
         }></Route>
+        <Route path='/BuyTicket/:id' element={
+          <>
+           <Header Language={Language} Setlanguage={setLanguage}></Header>
+          
+           <BuyTicket/>
+          </>
+        }>
+
+        </Route>
     </Routes>
     </BrowserRouter>
     

@@ -1,5 +1,5 @@
 .detail{
-   background: linear-gradient(to bottom, rgb(39,39,42) 48.04%, rgb(0,0,0) 100%);;
+   background: linear-gradient(to bottom, rgb(39,39,42) 48.04%, rgb(0,0,0) 100%);
     display: flex;
     padding: 30px;
     justify-content: center;
@@ -118,6 +118,6 @@
     left: 458px;
 }
 .info{
-    padding:10px 0 20px 0px;
+    padding:10px 0 0px 0px;
     background-color:rgb(2, 2, 3);
 }

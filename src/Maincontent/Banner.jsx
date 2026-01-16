@@ -1,10 +1,8 @@
 import { useState } from "react";
 import {data} from './data.js'
 import ImgVideo from './ImgVideo.jsx'
-import { useContext } from "react";
-import { LanguageContext } from "../Context.jsx";
 export default function Banner(){
-     const Language=useContext(LanguageContext);
+    
      const [mainIndex, setMainIndex] = useState(0);
        const currentitem=data[mainIndex];
     const nextitem=data[(mainIndex+1)%data.length];

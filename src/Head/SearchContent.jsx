@@ -1,8 +1,23 @@
 import "./SearchContent.css"
-import Music1 from "../assets/Music/img1.jpg"
-import { useState } from "react";
+import category1 from "/categoryrecommend1.webp"
+import category2 from "/categoryrecommend2.jpg"
+import category3 from "/categoryrecommend3.jpg"
+import category4 from "/categoryrecommend4.webp"
+import HN from "/City/pic3.webp"
+import DaLat from "/City/pic1.webp"
+import HCM from "/City/pic2.webp"
+import Other from "/City/pic4.webp"
+import { useEffect, useState } from "react";
+import GridSearch from "./GridSearch.jsx"
 export default function SearchContent({ref}){
      const[active,setActive]=useState("category");
+     const[recommend,setRecommend]=useState([])
+      useEffect(() => {
+         fetch("http://localhost:3000/events?category=Recommend")
+           .then(res => res.json())
+           .then(json => setRecommend(json));
+       }, []);
+       const index=0;
     return(
         <>
         <div className="Search" ref={ref}>
@@ -15,21 +30,29 @@ export default function SearchContent({ref}){
        </div>
        <div className="imgSearchForm">
           <div className="imgSearch">
-               <img src={Music1} alt="" />
-               <span>Nhạc sống</span>
+               <img src={active==="city"?HCM:category1} alt="" />
+               <span>{active==="city"?"Tp.Hồ Chí Minh":"Nhạc sống"}</span>
           </div>
           <div className="imgSearch">
-               <img src={Music1} alt="" />
-               <span>Sân khấu và nghệ thuật</span>
+               <img src={active==="city"?HN:category2} alt="" />
+               <span>{active==="city"?"Hà Nội":"Sân khấu và Nghệ Thuật"}</span>
           </div>
           <div className="imgSearch">
-               <img src={Music1} alt="" />
-               <span>Thể Thao</span>
+               <img src={active==="city"?DaLat:category3} alt="" />
+               <span>{active==="city"?"Đà Lạt":"Thể Thao"}</span>
           </div>
           <div className="imgSearch">
-               <img src={Music1} alt="" />
-               <span>Hội thảo và WorkShop</span>
+               <img src={active==="city"?Other:category4} alt="" />
+               <span>{active==="city"?"Vị trí khác":"Hội thảo & WorkShop"}</span>
           </div>
+       </div>
+       <div className="recommendSearch">
+         <span>Gợi ý dành cho bạn</span>
+         <div className="recommendForm">
+         <div className="recommendGrid">
+           {recommend.slice(index,index+9).map((i)=><GridSearch {...i} key={i.id}/>)}
+         </div>
+         </div>
        </div>
        </div>
         </>

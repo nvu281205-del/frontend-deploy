@@ -119,6 +119,7 @@ header button:focus {
     background-color: white;
 }
 .Language{
+    z-index: 10;
     position: relative;
     background-color: #54c273;
      border-radius: 8px;

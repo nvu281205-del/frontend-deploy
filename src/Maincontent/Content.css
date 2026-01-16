@@ -3,6 +3,7 @@ margin-top: 15px;
    width: 320px;
    height: 280px;
    cursor: pointer;
+   position: relative;
 }
 .content img{
     width: 320px;
@@ -32,4 +33,18 @@ align-items: center;
 .Date img{
     width: 15px;
     height: 15px;
+}
+.dateexp{
+    position: absolute;
+    background-color: rgb(252, 130, 10);
+    border-radius: 0px 12px 0px 12px;
+    padding:2px 5px 4px 5px;
+    top: 0;
+    right: -2px;
+}
+.dateexp span {
+    color: white;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }

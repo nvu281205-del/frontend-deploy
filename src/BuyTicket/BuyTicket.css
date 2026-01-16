@@ -72,6 +72,10 @@ font-size: 12px;
     background-color:#38383D ;
     border-top:1px solid rgb(81, 81, 88)
 }
+.typetickform{
+    display: flex;
+    flex-direction: column;
+}
 .tickettype{ 
     margin-top: 10px;
     display: flex;

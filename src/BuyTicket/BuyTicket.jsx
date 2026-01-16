@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react"
 import "./BuyTicket.css"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 export  default function BuyTicket(){
-  const[count,setCount]=useState(0);
-  const disabledminus=count<=0;
-  const disabledplus=count>=10;
   const {id}=useParams();
    const[eventid,setEventid]=useState({});
     useEffect(()=>{
@@ -13,30 +10,50 @@ export  default function BuyTicket(){
         .then(res=>setEventid(res.data))
         .catch(err=>console.log(err))
     },[id])
+    const navigate=useNavigate();
+  const[counts,setCounts]=useState({});
+  const totalCount = Object.values(counts).reduce((sum, val) => sum + val, 0);
+  const totalPrice = eventid.ticket?eventid.ticket.reduce((sum,ticket)=>{
+    const count =counts[ticket.id]||0;
+    return sum + count * Number(ticket.price);
+  },0):0;
+ const handleChange = (ticketId, delta) => {
+  setCounts(prev => {
+    const current = prev[ticketId] || 0;
+    const newCount = Math.max(0, Math.min(10, current + delta)); // giới hạn 0–10
+    return { ...prev, [ticketId]: newCount };
+  });
+};
+
+  
     return (
         <>     <div className="contentbuy">
-               <div className="ReturnBt">
+               <div className="ReturnBt" onClick={()=>navigate(-1)}>
         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="back"><path fillRule="evenodd" clipRule="evenodd" d="M8.707 3.793a1 1 0 010 1.414L4.414 9.5H18a1 1 0 110 2H4.414l4.293 4.293a1 1 0 11-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 0z" fill="#fff"></path></svg>
                <span>Trở về</span>
                </div>
                <div className="ticketform">
          <span className="Choseticket">Chọn vé</span>
-         <div className="infoticket">
-           
-           {eventid.tickets?.map((i)=>(
-            <>
-           <div className="pricetype" key={i.id}>
-            <span>{i.type}</span>
-            <span className="price">{i.price}</span>
+           <div className="typetickform">
+           {eventid.ticket?.map((ticket)=>{
+            const count=counts[ticket.id]||0;
+            const disabledminus=count<=0;
+            const disabledplus=count>=10;
+            return(
+            <div className="infoticket" key={ticket.id}>
+           <div className="pricetype" >
+            <span>{ticket.type}</span>
+            <span className="price">{Number(ticket.price).toLocaleString("vi-VN")}<sup>đ</sup></span>
             </div>
            <div className="quantity">
-             <button disabled={disabledminus} className={disabledminus?"countdisable":"countable"} onClick={()=>setCount((count)=>count-1)}>-</button>
+             <button disabled={disabledminus} className={disabledminus?"countdisable":"countable"} onClick={()=>handleChange(ticket.id,-1)}>-</button>
              <button className="quantitybt">{count}</button>
-             <button disabled={disabledplus} className={disabledplus?"countdisable":"countable"}onClick={()=>setCount((count)=>count+1)}>+</button>
+             <button disabled={disabledplus} className={disabledplus?"countdisable":"countable"}onClick={()=>handleChange(ticket.id,+1)}>+</button>
            </div>
-           </>
-           ))}
-         </div>
+           </div>
+           )})}
+           </div>
+        
                </div>          
                <div className="aside">
             <div className="asidehead">
@@ -58,10 +75,10 @@ export  default function BuyTicket(){
             </div>
             <div className="asideprice">
              <span>Giá vé</span>
-             {eventid.tickets?.map((ticket)=>(
+             {eventid.ticket?.map((ticket)=>(
               <div key={ticket.id} className="tickettype">
              <span>{ticket.type}</span>
-             <span className="price">{ticket.price} đ</span>
+             <span className="price">{Number(ticket.price).toLocaleString("vi-VN")} <sup>đ</sup></span>
              </div>
              ))}
              
@@ -69,9 +86,9 @@ export  default function BuyTicket(){
             <div className="Buyticket">
               <div className="chosenticket">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M22 15v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3l.879-.879a3 3 0 000-4.242L2 9V6a2 2 0 012-2h16a2 2 0 012 2v3l-.879.879a3 3 0 000 4.242L22 15zM8 10a1 1 0 011-1h6a1 1 0 110 2H9a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H9z" fill="#fff"></path></svg>
-             <span>x{count}</span>           
+             <span>x{totalCount}</span>           
            </div>
-            <button disabled={count<=0} className={count>0?"buyable":"buydisable"}>Vui lòng chọn vé</button>
+            <button disabled={totalCount<=0} className={totalCount>0?"buyable":"buydisable"}>{totalCount>0?`Tiếp Tục -${(totalPrice.toLocaleString("vi-VN"))}đ`:"Vui lòng chọn vé"}</button> 
             </div>
             </div>  
                </div>         

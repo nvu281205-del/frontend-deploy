@@ -129,11 +129,7 @@
 }
 .Recommend span{
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-}
-.recomcontent span{
-    color: white;
-    font-size: 11px!important;
 }

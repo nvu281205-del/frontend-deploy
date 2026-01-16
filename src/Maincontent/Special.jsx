@@ -27,7 +27,7 @@ export default function Special ({titleEn,titleVi,category}){
     })}>
         <span>&#8249;</span>
       </button>)}
-       <button className="forward-button" onClick={()=>setThumbIndex((thumbIndex)=>{
+     {thumbIndex<0&&<button className="forward-button" onClick={()=>setThumbIndex((thumbIndex)=>{
         const MaxIndex=data2.length-5;
         if(thumbIndex+4<MaxIndex){
        return thumbIndex + 4;
@@ -35,7 +35,7 @@ export default function Special ({titleEn,titleVi,category}){
        return MaxIndex;
        })} disabled={thumbIndex >= data2.length - 5} >
       <span>&#8250;</span>
-      </button>
+      </button>}  
           </div>
         </div>
         </>

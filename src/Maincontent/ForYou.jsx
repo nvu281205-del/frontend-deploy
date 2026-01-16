@@ -1,9 +1,9 @@
-import {FY} from './data.js'
+
 import Content from "./Content.jsx";
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-
 import { LanguageContext } from '../Context.jsx';
+import { Link } from 'react-router-dom';
 export default function ForYou({titleEn,titleVi,category}){
 const Language=useContext(LanguageContext);
 const[data,setData]=useState([])
@@ -17,7 +17,10 @@ useEffect(()=>{
          <div className="ForYou">
         <span className="topic">{Language==="vi"?titleVi:titleEn}</span>
           <div style={{display:"flex", gap:"10px",justifyContent:"center"}}>
-             {data.map((i)=>(<Content {...i} key={i.id} Language={Language}/>))}</div>
+             {data.map((i)=>(
+              <Link className="link" to={`/Detail/${i.id}`} key={i.id}> <Content {...i}/></Link>
+                ))}
+        </div>
         </div>
         </>
     )

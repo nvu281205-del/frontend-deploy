@@ -15,10 +15,10 @@ export default function Organizer({id}){
              <span>Ban tổ chức</span>
          </div>
          <div className='OrganizerBody'>
-            <img src={eventid.imgSrc} alt="" />
+            <img src={eventid.organizer?.logoUrl} alt="" />
             <div className='Organizerinfo'>
-              <span>{eventid.organizername}</span>
-              <p>{eventid.organizerdes}</p>
+              <span>{eventid.organizer?.name}</span>
+              <p>{eventid.organizer?.description}</p>
             </div>
          </div>
         </div>

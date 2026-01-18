@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./BuyTicket.css"
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 export  default function BuyTicket(){
   const {id}=useParams();
@@ -45,7 +45,7 @@ export  default function BuyTicket(){
             <span>{ticket.type}</span>
             <span className="price">{Number(ticket.price).toLocaleString("vi-VN")}<sup>đ</sup></span>
             </div>
-           <div className="quantity">
+           <div className="quantityform">
              <button disabled={disabledminus} className={disabledminus?"countdisable":"countable"} onClick={()=>handleChange(ticket.id,-1)}>-</button>
              <button className="quantitybt">{count}</button>
              <button disabled={disabledplus} className={disabledplus?"countdisable":"countable"}onClick={()=>handleChange(ticket.id,+1)}>+</button>
@@ -88,7 +88,7 @@ export  default function BuyTicket(){
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M22 15v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3l.879-.879a3 3 0 000-4.242L2 9V6a2 2 0 012-2h16a2 2 0 012 2v3l-.879.879a3 3 0 000 4.242L22 15zM8 10a1 1 0 011-1h6a1 1 0 110 2H9a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H9z" fill="#fff"></path></svg>
              <span>x{totalCount}</span>           
            </div>
-            <button disabled={totalCount<=0} className={totalCount>0?"buyable":"buydisable"}>{totalCount>0?`Tiếp Tục -${(totalPrice.toLocaleString("vi-VN"))}đ`:"Vui lòng chọn vé"}</button> 
+      <Link to={`/BookTicket/${id}`}><button disabled={totalCount<=0} className={totalCount>0?"buyable":"buydisable"}>{totalCount>0?`Tiếp Tục -${(totalPrice.toLocaleString("vi-VN"))}đ`:"Vui lòng chọn vé"}</button></Link>  
             </div>
             </div>  
                </div>         

@@ -1,0 +1,109 @@
+.filters{
+ position: relative;
+}
+.filter{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 100px;
+    background-color: #2DC275;
+}
+.filter span{
+    color: white;
+}
+.filterform{
+    z-index: 9;
+    width: 750px;
+    position: absolute;
+    right: 0;
+    top: 35px;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+}
+.filterform span{
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+.radiobt{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.radiobutton{
+    -webkit-appearance: none;
+      appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid gray;
+    cursor: pointer;
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.radiobutton:hover{
+    border: 1px solid rgb(9, 135, 224);
+}
+.radiobutton:checked{
+     border: 1px solid #2DC275;
+}
+.radiobutton:checked::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #2DC275;
+    border-radius: 50px;
+    position: absolute;
+}
+.radiobt span{
+    margin-top: 5px;
+    color: rgb(56, 51, 51);
+    font-weight: lighter;
+}
+.Locate{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.dashed-line {
+  border: none;             /* bỏ border mặc định */
+  border-top: 1px dashed gray; /* gạch ngang đứt đoạn */
+  margin: 20px 0;            /* khoảng cách trên dưới */
+}
+
+.category{
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+}
+.categorybutton{
+    cursor: pointer;
+    padding: 8px 12px 8px 12px;
+    background-color: #ffffff;
+    border: rgb(68, 58, 58) 1px solid;
+    border-radius: 100px;
+}
+.categorybutton:hover{
+    color: #1677ff;
+}
+.categorybutton.active{
+    color: white;
+    background-color: #2DC275;
+    border: none;
+}
+.confirmfilter{
+    cursor: pointer;
+    width: 100%;
+    margin:15px 15px 15px 0px;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    background-color: #2DC275;
+    border: none;
+}

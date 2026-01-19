@@ -51,27 +51,27 @@ export default function BookTicket(){
             <span>Phương thức thanh toán</span>
             <div className="Method">
             <div className="apppayment">
-                <input type="radio"name="payment" />
+                <input type="radio" className="radiopayment" name="payment" />
                 <img src={VNPAY} alt="" />
                 <span>VNPAY/Ứng dụng ngân hàng</span>
             </div>    
             <div className="apppayment">
-                <input type="radio" name="payment" />
+                <input type="radio" className="radiopayment" name="payment" />
                 <img src={VietQR} alt="" />
                 <span>VietQR</span>
             </div>    
             <div className="apppayment">
-                <input type="radio" name="payment"/>
+                <input type="radio" className="radiopayment" name="payment"/>
                 <img src={ShopeePay} alt="" />
                 <span>ShopeePay</span>
             </div>    
             <div className="apppayment" >
-                <input type="radio" name="payment" />
+                <input type="radio" className="radiopayment" name="payment" />
                 <img src={ZaloPay} alt="" />
                 <span>ZaloPay</span>
             </div>    
             <div className="apppayment">
-                <input type="radio"name="payment" />
+                <input type="radio" className="radiopayment" name="payment" />
                 <img src={Visa} alt="" />
                 <span>Thẻ ghi nợ/Thẻ tín dụng</span>
             </div>    

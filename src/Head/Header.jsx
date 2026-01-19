@@ -12,17 +12,29 @@ export default function Header({Setlanguage,Language}) {
   const loginRef=useRef();
   const regisRef=useRef();
   const formRef=useRef()
+  const inputRef=useRef();
   const[showForm,setShowForm]=useState(false);
   const[querysearch,setQuerySearch]=useState("");
-   useEffect(() => { 
-          function handleClickOutside(event) { 
-          if (formRef.current && !formRef.current.contains(event.target)) {
-          setShowForm(false);
-       } }
-  document.addEventListener("mousedown", handleClickOutside); 
+ useEffect(() => {
+  function handleClickOutside(event) {
+    const formNode = formRef.current;
+
+    if (
+      formNode &&
+      !formNode.contains(event.target) && // click không nằm trong form
+      inputRef &&
+      !inputRef.current.contains(event.target) // click không nằm trong input
+    ) {
+      setShowForm(false);
+    }
+  }
+
+  document.addEventListener("mousedown", handleClickOutside);
   return () => {
-       document.removeEventListener("mousedown", handleClickOutside);
-      } }, []);
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
     return (
         <>
             <header>
@@ -31,7 +43,7 @@ export default function Header({Setlanguage,Language}) {
                     <div className="search-container">
                            <img id="searchIcon" src={searchIcon} alt="search" /> 
                         {Language==="vi"?    
-                        (<><input onChange={(e)=>setQuerySearch(e.target.value)} value={querysearch} onClick={()=>setShowForm(true)} type="text" placeholder="Bạn tìm gì hôm nay?"/>
+                        (<><input ref={inputRef} onChange={(e)=>setQuerySearch(e.target.value)} value={querysearch} onClick={()=>setShowForm(!showForm)} type="text" placeholder="Bạn tìm gì hôm nay?"/>
                         <span ></span>
                     <Link to={`/MoreConTent?title=${encodeURIComponent(querysearch)}`}> <button >Tìm kiếm</button></Link> </>): (<><input type="text" placeholder="What are you looking for?"/>
                         <span ></span>
@@ -69,7 +81,7 @@ export default function Header({Setlanguage,Language}) {
                     </div>
                     </div>
                 </div>   
-           {showForm&& <SearchContent ref={formRef}/> }                           
+           {showForm&& <SearchContent ref={formRef} setShowForm={setShowForm}/> }                           
                 </nav>
                 
             </header>

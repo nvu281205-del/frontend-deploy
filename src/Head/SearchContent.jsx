@@ -9,7 +9,8 @@ import HCM from "/City/pic2.webp"
 import Other from "/City/pic4.webp"
 import { useEffect, useState } from "react";
 import GridSearch from "./GridSearch.jsx"
-export default function SearchContent({ref}){
+import { Link } from "react-router-dom"
+export default function SearchContent({ref,setShowForm}){
      const[active,setActive]=useState("category");
      const[recommend,setRecommend]=useState([])
       useEffect(() => {
@@ -29,28 +30,41 @@ export default function SearchContent({ref}){
           <span className={active==="city"?"linecity":"linecate"}></span>
        </div>
        <div className="imgSearchForm">
-          <div className="imgSearch">
-               <img src={active==="city"?HCM:category1} alt="" />
-               <span>{active==="city"?"Tp.Hồ Chí Minh":"Nhạc sống"}</span>
-          </div>
-          <div className="imgSearch">
-               <img src={active==="city"?HN:category2} alt="" />
-               <span>{active==="city"?"Hà Nội":"Sân khấu và Nghệ Thuật"}</span>
-          </div>
-          <div className="imgSearch">
-               <img src={active==="city"?DaLat:category3} alt="" />
-               <span>{active==="city"?"Đà Lạt":"Thể Thao"}</span>
-          </div>
-          <div className="imgSearch">
-               <img src={active==="city"?Other:category4} alt="" />
-               <span>{active==="city"?"Vị trí khác":"Hội thảo & WorkShop"}</span>
-          </div>
+     <Link onClick={()=>setShowForm(false)} to={active==="city"?"/MoreContent?city=HCM":"/MoreContent?category=Music"}>   {active==="city"?  <div className="imgSearch">
+               <img src={HCM} alt="" />
+               <span>"Tp Hồ Chí Minh"</span>
+          </div>: <div className="imgSearch">
+               <img src={category1} alt="" />
+               <span>"Nhạc sống"</span>
+          </div>}</Link>  
+    <Link onClick={()=>setShowForm(false)} to={active==="city"?"/MoreContent?city=Hà%20Nội":"/MoreContent?category=Music"}>       {active==="city"? <div className="imgSearch">
+               <img src={HN} alt="" />
+               <span>"Hà Nội"</span>
+          </div>: <div className="imgSearch">
+               <img src={category2} alt="" />
+               <span>"Sân khấu & Nghê Thuật"</span>
+          </div>}</Link> 
+    <Link onClick={()=>setShowForm(false)} to={active==="city"?"/MoreContent?city=Đà%20Lạt":"/MoreContent?category=Sport"}>       {active==="city"? <div className="imgSearch">
+               <img src={DaLat} alt="" />
+               <span>"Dà Lạt"</span>
+          </div>: <div className="imgSearch">
+               <img src={category3} alt="" />
+               <span>"Thể Thao"</span>
+          </div>}</Link>
+      <Link onClick={()=>setShowForm(false)} to={active==="city"?"/MoreContent?city=Other":"/MoreContent?category=WorkShop"}>         {active==="city"? <div className="imgSearch">
+               <img src={Other} alt="" />
+               <span>"Vị trí khác"</span>
+          </div>: <div className="imgSearch">
+               <img src={category4} alt="" />
+               <span>"Hội thảo & WorkShop"</span>
+          </div>}</Link>
        </div>
        <div className="recommendSearch">
          <span>Gợi ý dành cho bạn</span>
          <div className="recommendForm">
          <div className="recommendGrid">
-           {recommend.slice(index,index+9).map((i)=><GridSearch {...i} key={i.id}/>)}
+          {recommend.slice(index,index+9).map((i)=>
+          <Link onClick={()=>setShowForm(false)} to={`/Detail/${i.id}`} key={i.id}><GridSearch {...i}/>)</Link>)} 
          </div>
          </div>
        </div>

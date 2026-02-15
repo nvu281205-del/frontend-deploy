@@ -24,7 +24,7 @@ export default function GridSearch({imgSrc,title,baseprice,date}){
     <img src={imgSrc} alt={title} />
     <div style={{display:"flex",flexDirection:"column",gap:"5px"}}>
     <h3>{title}</h3>
-        <strong>{Language==="vi"?"Từ":"Only"} {baseprice}<sup>đ</sup></strong>
+        <strong>{Language==="vi"?"Từ":"Only"} {Number(baseprice).toLocaleString("vi-VN")}<sup>đ</sup></strong>
     <div className="Date">
      <img src={dateimg} alt="" />
         <span>{formatDate(date,Language)}</span>

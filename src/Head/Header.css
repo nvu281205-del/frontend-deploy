@@ -61,7 +61,6 @@ header input {
     cursor: pointer;
     border: none;    
     background: none;
-   
 }
 header button:focus {
   outline: none;
@@ -84,6 +83,10 @@ header button:focus {
 .eventdiv{
     display: flex;
     align-items: center;
+}
+.linkmyticket{
+    text-decoration: none;
+    display: flex;
 }
 .MyTicket{
    align-items: center;
@@ -237,4 +240,7 @@ width: 60px;
 .MyLink{
     color: black;
     text-decoration: none;
+}
+.headavatar{
+    object-fit: cover;
 }

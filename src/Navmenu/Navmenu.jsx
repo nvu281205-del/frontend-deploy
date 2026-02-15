@@ -1,25 +1,29 @@
+import { useContext } from "react"
 import "./Navmenu.css"
 import { Link } from "react-router-dom"
-export default function Navmenu({Language}) {
-    return (
-        <>
-        {Language==="vi"?
-        (<nav className="Navmenu">
-          <Link to="/MoreContent?category=Music" className="link"><span>Nhạc sống</span></Link>
-          <Link to="/MoreContent?category=Theater&Art" className="link"><span>Sân khấu & Nghệ thuật</span></Link>
-          <Link to="/MoreContent?category=Sport" className="link"><span>Thể Thao</span></Link>
-          <Link to="/MoreContent?category=Other" className="link"><span>Khác</span></Link>
-          <Link to="/MoreContent?category=ResaleTicket" className="link"><span>Vé bán lại</span></Link>
-      </nav>):(
-        <nav className="Navmenu">
-          <Link to="/MoreContent?category=Music" className="link"><span>Music</span></Link>
-          <Link to="/MoreContent?category=Theater&Art" className="link"><span>Theater & Art</span></Link>
-          <Link to="/MoreContent?category=Sport" className="link"><span>Sport</span></Link>
-          <Link to="/MoreContent?category=Other" className="link"><span>Others</span></Link>
-          <Link to="/MoreContent?category=ResaleTicket" className="link"><span>Resale Ticket</span></Link>
-      </nav>
-      )
-      }
-        </>
-    )
+import { LanguageContext } from "../Context"
+const categories = [
+  { key: "Music", vi: "Nhạc sống", en: "Music" },
+  { key: "TheaterAndArt", vi: "Sân khấu & Nghệ thuật", en: "Theater & Art" },
+  { key: "SportAndOther", vi: "Thể Thao", en: "Sport" },
+  { key: "SportAndOther", vi: "Khác", en: "Others" },
+  { key: "ResaleTicket", vi: "Vé bán lại", en: "Resale Ticket" },
+];
+
+export default function Navmenu() {
+  const Language = useContext(LanguageContext);
+
+  return (
+    <nav className="Navmenu">
+      {categories.map(cat => (
+        <Link
+          key={cat.key}
+          to={`/MoreContent?category=${cat.key}`}
+          className="link"
+        >
+          <span>{Language === "vi" ? cat.vi : cat.en}</span>
+        </Link>
+      ))}
+    </nav>
+  );
 }

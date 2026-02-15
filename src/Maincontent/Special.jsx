@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import {data2} from './data.js'
 import Thumb from './Thumb.jsx'
 import { LanguageContext } from "../Context.jsx";
 import axios from "axios";
+import { Link } from "react-router-dom";
 export default function Special ({titleEn,titleVi,category}){
   const[event,setEvent]=useState([]);
    useEffect(()=>{
@@ -12,13 +12,16 @@ export default function Special ({titleEn,titleVi,category}){
     },[category])
       const Language=useContext(LanguageContext);
      const [thumbIndex, setThumbIndex] = useState(0);
-     const VisibleThumb = data2.slice(thumbIndex,thumbIndex+5);
+     const VisibleThumb = event.slice(thumbIndex,thumbIndex+5);
     return (
         <> 
             <div className="Thumb">
         <span className="topic">{Language==="vi"?titleVi:titleEn}</span>
             <div className="thumb-images">
-    {event.map((item)=>(<Thumb {...item} key={item.title}/>))}
+    {VisibleThumb.map((item)=>(  
+     <Link to={`/Detail/${item.id}`} key={item.id}>
+      <Thumb {...item}/></Link> ))}
+
     {thumbIndex>0&&( <button className="prev-button" onClick={()=>setThumbIndex((thumbIndex)=>{
       if(thumbIndex-4<0){
         return 0;
@@ -27,13 +30,13 @@ export default function Special ({titleEn,titleVi,category}){
     })}>
         <span>&#8249;</span>
       </button>)}
-     {thumbIndex<0&&<button className="forward-button" onClick={()=>setThumbIndex((thumbIndex)=>{
-        const MaxIndex=data2.length-5;
+     {thumbIndex<event.length&&<button className="forward-button" onClick={()=>setThumbIndex((thumbIndex)=>{
+        const MaxIndex=event.length-5;
         if(thumbIndex+4<MaxIndex){
        return thumbIndex + 4;
        }
        return MaxIndex;
-       })} disabled={thumbIndex >= data2.length - 5} >
+       })} disabled={thumbIndex >= event.length - 5} >
       <span>&#8250;</span>
       </button>}  
           </div>

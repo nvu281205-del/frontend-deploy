@@ -13,9 +13,9 @@ export default function Cities({titleVi,titleEn}){
         <div className="city">
          <span className="topic">{Language==="vi"?titleVi:titleEn}</span>
         <div style={{display:"flex",gap:"12px",justifyContent:"center",marginTop:"15px"}}>
-      <Link to="/MoreContent?city=Hà%20Nội">   <City imgSrc={HaNoi} titleEn="Ha Noi" titleVi="Hà Nội"/> </Link>
-      <Link to="/MoreContent?city=Hồ%20Chí%20Minh">     <City imgSrc={HCM} titleEn="Ho Chi Minh City" titleVi="Tp Hồ Chí Minh"/></Link>
-      <Link to="/MoreContent?city=Đà&20Lạt"><City imgSrc={DaLat} titleEn="Da Lat" titleVi="Đà Lạt"/></Link>   
+      <Link to="/MoreContent?city=HN">   <City imgSrc={HaNoi} titleEn="Ha Noi" titleVi="Hà Nội"/> </Link>
+      <Link to="/MoreContent?city=HCM">     <City imgSrc={HCM} titleEn="Ho Chi Minh City" titleVi="Tp Hồ Chí Minh"/></Link>
+      <Link to="/MoreContent?city=DL"><City imgSrc={DaLat} titleEn="Da Lat" titleVi="Đà Lạt"/></Link>   
       <Link to="/MoreContent?city=Other"><City imgSrc={HaNoi} titleEn="Other Location" titleVi="Địa điểm khác"/></Link> 
         </div>
         </div>

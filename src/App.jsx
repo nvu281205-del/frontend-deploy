@@ -6,20 +6,19 @@ import { useState } from 'react'
 import Header from './Head/Header.jsx'
 import Maincontent from './Maincontent/Maincontent.jsx';
 import Footer from './Footer/Footer.jsx';
-import MoreConTent from "./MoreContent/MoreContent.jsx"
 import { LanguageContext, Token } from './Context.jsx';
 import Detail from './Detail/Detail.jsx';
 import MoreContent from './MoreContent/MoreContent.jsx';
-import BuyTicket from './BuyTicket/BuyTicket.jsx';
 import BookTicket from './BuyTicket/BookTicket.jsx';
 import ScrolltoTop from './ScrolltoTop.jsx';
 import MyTicket from './Head/MyTicket.jsx';
 import Account from './Head/Account.jsx';
+import BuyTicket from './BuyTicket/BuyTicket.jsx';
 function App() {
   const[Language,setLanguage]=useState("vi");
   return ( 
    <>
-   <LanguageContext.Provider value={{Language,setLanguage}}>
+   <LanguageContext.Provider value={Language}>
    
 
     <BrowserRouter>
@@ -27,13 +26,13 @@ function App() {
     <Header Language={Language} Setlanguage={setLanguage}></Header>
     <Routes>
         <Route path="/" element={ <>
-           <Navmenu Language={Language} ></Navmenu>
+           <Navmenu></Navmenu>
           <Maincontent/> 
           </>}/>
 
-       <Route path="/MoreContent" element={<MoreContent Language={Language}/>}/>
+       <Route path="/MoreContent" element={<MoreContent/>}/>
       <Route path='/Detail/:id' element={<>
-           <Navmenu Language={Language} ></Navmenu>
+           <Navmenu></Navmenu>
       <Detail/>
       </>}>
         </Route>
@@ -41,10 +40,9 @@ function App() {
         <Route path='/BuyTicket/:id' element={<BuyTicket/>}></Route>
         <Route path='/BookTicket/:id' element={<BookTicket/>}></Route>
          <Route path='/MyTicket' element={<MyTicket/>}></Route>
-         <Route path='/Account' element={<Account/>}/>
-         
+         <Route path='/Account' element={<Account/>}/>        
     </Routes>
-      <Footer/>
+      <Footer Language={Language} Setlanguage={setLanguage}/>
     </BrowserRouter>
    
    </LanguageContext.Provider>

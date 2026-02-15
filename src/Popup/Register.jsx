@@ -2,7 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import './Register.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 export default function Register({loginRef,ref}){
+    const navigate=useNavigate()
       const[error,setError]=useState("");
       const [password,setPassword]=useState("");
       const[confirm,setConfirm]=useState("");
@@ -14,7 +17,9 @@ export default function Register({loginRef,ref}){
       const[showpw,setShowpw]=useState(false);
       const[showcf,setShowcf]=useState(false);
 
-    
+      function handleClose(){
+        ref.current.close();
+      }
       function handleEmail(e){
         const v=e.target.value;
         setEmail(v);
@@ -46,12 +51,15 @@ export default function Register({loginRef,ref}){
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try{
-        const _res= await axios.post('http://localhost:3000/auth/register',
+        const res= await axios.post('http://localhost:3000/auth/register',
              {email,password},
            { headers:{'Content-Type':'application/json'}}
-        );
+        );       
+        localStorage.setItem("token",res.data.token.access_token);
+        localStorage.setItem("refreshtoken",res.data.token.refresh_token)
          ref.current.close();
-            loginRef.current.showModal();
+        navigate('/Account')
+        window.location.reload()
         }catch(err){
             setError(err.response?.data?.message);
         }       
@@ -59,10 +67,10 @@ export default function Register({loginRef,ref}){
     return (
         <> 
         <dialog ref={ref} className='Register-dialog'>
-        <form method='dialog'>
+        <form method='dialog' onSubmit={handleSubmit}>
             <div className='Register-header'>
             <span>Đăng ký tài khoản</span>
-    <button className='Register-closebtn'> <span style={{fontSize:"14px"}}> ✖</span></button>
+    <button onClick={handleClose} className='Register-closebtn'> <span style={{fontSize:"14px"}}> ✖</span></button>
             </div>
             <div className='Register-body'>
             <div className='input'>

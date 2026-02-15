@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react"
+import { useContext, useEffect,useState } from "react"
 import { useLocation } from "react-router-dom"
 import Content from "../Maincontent/Content";
 import './MoreConTent.css'
@@ -6,7 +6,9 @@ import GridContent from "./GridContent";
 import empty from "/empty.webp"
 import axios from "axios";
 import Filterform from "./FilterForm";
+import { LanguageContext } from "../Context";
 export default function MoreContent(){
+    const Language=useContext(LanguageContext)
     const[recommend,setRecommend]=useState([])
     const[data,setData]=useState([]);
     const location=useLocation();

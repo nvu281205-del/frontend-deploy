@@ -38,15 +38,15 @@ export default function Filterform({onApply}){
         <span>Vị trí</span>
         <div className="Locate">
         <div className="radiobt" >
-             <input type="radio" className="radiobutton" defaultChecked value={"Hà Nội"} onChange={(e)=>setSelectedCity(e.target.value)} name="locate"/>
+             <input type="radio" className="radiobutton" defaultChecked value={"HN"} onChange={(e)=>setSelectedCity(e.target.value)} name="locate"/>
         <span>Hà Nội</span>
         </div>
         <div className="radiobt"  >
-             <input type="radio" className="radiobutton"  value={"Hồ Chí Minh"} onChange={(e)=>setSelectedCity(e.target.value)} name="locate"/>
+             <input type="radio" className="radiobutton"  value={"HCM"} onChange={(e)=>setSelectedCity(e.target.value)} name="locate"/>
         <span>Hồ Chí Minh</span>
         </div>
         <div className="radiobt"  >
-             <input type="radio" className="radiobutton"  value={"Đà Lạt"} onChange={(e)=>setSelectedCity(e.target.value)} name="locate"/>
+             <input type="radio" className="radiobutton"  value={"DL"} onChange={(e)=>setSelectedCity(e.target.value)} name="locate"/>
         <span>Đà Lạt</span>
         </div>
         <div className="radiobt" >
@@ -59,10 +59,10 @@ export default function Filterform({onApply}){
          <span>Thể loại</span>
          <div className="category">
         <button onClick={()=>{setSelectedCate("Music")}} className={selectedCate === "Music" ? "categorybutton active" : "categorybutton"}>Nhạc sống</button> 
-        <button onClick={()=>setSelectedCate("TheaterandArt")} className={selectedCate === "TheaterandArt" ? "categorybutton active" : "categorybutton"}>Sân khấu và nghệ thuật</button> 
+        <button onClick={()=>setSelectedCate("TheaterAndArt")} className={selectedCate === "TheaterAndArt" ? "categorybutton active" : "categorybutton"}>Sân khấu và nghệ thuật</button> 
         <button  onClick={()=>setSelectedCate("Sport")}className={selectedCate === "Sport" ? "categorybutton active" : "categorybutton"}>Thể thao</button> 
-        <button  onClick={()=>setSelectedCate("Nhạc sống")}className={selectedCate === "Nhạc sống" ? "categorybutton active" : "categorybutton"}>Hội thảo & Workshop</button> 
-        <button  onClick={()=>setSelectedCate("AttandExp")}className={selectedCate === "AttandExp" ? "categorybutton active" : "categorybutton"}>Tham quan & Trải nghiệm</button> 
+        <button  onClick={()=>setSelectedCate("SeminarAndWorkshop")}className={selectedCate === "SeminarAndWorkshop" ? "categorybutton active" : "categorybutton"}>Hội thảo & Workshop</button> 
+        <button  onClick={()=>setSelectedCate("AttAndExp")}className={selectedCate === "AttAndExp" ? "categorybutton active" : "categorybutton"}>Tham quan & Trải nghiệm</button> 
         <button  onClick={()=>setSelectedCate("Other")}className={selectedCate === "Other" ? "categorybutton active" : "categorybutton"}>Khác</button> 
           </div>
         </div>
@@ -70,7 +70,6 @@ export default function Filterform({onApply}){
       onApply(selectedCity,selectedCate); 
           setShowForm(false);
        }} className="confirmfilter">Áp Dụng</button>
-        
         </div> 
       )}     
         </div>

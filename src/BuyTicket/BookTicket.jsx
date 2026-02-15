@@ -1,16 +1,17 @@
 import"./BookTicket.css"
-import Music1 from "/Music/img1.jpg"
 import VNPAY from "/VNPAY.png"
 import VietQR from "/VietQR.png"
 import ZaloPay from "/ZaloPay.png"
 import ShopeePay from "/ShopeePay.png"
 import Visa from "/Visa.png"
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
+import { LanguageContext } from "../Context"
 export default function BookTicket(){
     const [selectmethod,setSelectMethod]=useState("VNPAY")
     const {id}=useParams()
+    const Language=useContext(LanguageContext)
      const[eventid,setEventid]=useState({});
     useEffect(()=>{
         axios.get(`http://localhost:3000/events/${id}`)
@@ -48,7 +49,7 @@ export default function BookTicket(){
     return(
         <>
         <div className="BookTicket">
-            <img src={Music1} alt="" className="backgroundimg" />
+            <img src={eventid.imgSrc} alt="" className="backgroundimg" />
         <div className="BookHead">
           <span>{eventid.title}</span>
           <div className="BookInfo">
@@ -69,20 +70,19 @@ export default function BookTicket(){
         </div>
         <div className="BookBody">
             <div className="Payment">
-       <span>THANH TOÁN</span>
+       <span>{Language==="vi"?"THANH TOÁN":"PAYMENT"}</span>
           <div className="ticketreceive">
-            <span>Thông tin nhận vé</span>
-            <p>Vé điện tử sẽ được hiển thị trong
-            mục "Vé của tôi" trong tài khoản của bạn sau khi thanh toán thành công.
+            <span>{Language==="vi"?"Thông tin nhân vé":"Ticket receipt"}</span>
+            <p>{Language==="vi"?"Vé điện tử sẽ được hiển thị trong mục 'Vé của tôi' trong tài khoản của bạn sau khi thanh toán thành công":"The e-ticket will be displayed in 'MyTicket' section in your account after successful payment.  "}
             </p>
           </div>
           <div className="PaymentMethod">
-            <span>Phương thức thanh toán</span>
+            <span>{Language==="vi"?"Phương thức thanh toán":"Payment Method"}</span>
             <div className="Method">
             <div className="apppayment">
                 <input defaultChecked type="radio" className="radiopayment" name="payment" value='VNPAY' onChange={(e)=>setSelectMethod(e.target.value)}/>
                 <img src={VNPAY} alt="" />
-                <span>VNPAY/Ứng dụng ngân hàng</span>
+                <span>VNPAY</span>
             </div>    
             <div className="apppayment">
                 <input type="radio" className="radiopayment" name="payment" value='VietQR' onChange={(e)=>setSelectMethod(e.target.value)} />
@@ -109,11 +109,11 @@ export default function BookTicket(){
             </div>
             <div className="payinfo">
             <div className="PaymentInfo">
-               <span className="Paymentinfo">Thông tin đặt vé</span>
+               <span className="Paymentinfo">{Language==="vi"?"Thông tin đặt vé":"Ticket booking information"}</span>
                <div className="PaymentInfoform">
                <div className="titleInfoPrice">
-                <span>Loại vé</span>
-                <span>Số Lượng</span>
+                <span>{Language==="vi"?"Loại vé":"Type"}</span>
+                <span>{Language==="vi"?"Số Lượng":"Quantity"}</span>
                </div> 
                {eventid.tickets?.map((ticket)=>{
                     const count=counts[ticket.id] || 0;
@@ -134,9 +134,9 @@ export default function BookTicket(){
                </div>
             </div>
             <div className="Orderinfo">
-                  <span>Thông tin đơn hàng</span>
+                  <span>{Language==='vi'?"Thông tin đơn hàng":"Order information"}</span>
                   <div className="Subtotal">
-                  <span>Tạm tính</span>
+                  <span>{Language==='vi'?"Tạm tính":"Subtotal"}</span>
                   <span>{totalPrice}</span>
                   </div>
                   <div className="Total">

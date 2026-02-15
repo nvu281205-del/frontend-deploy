@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./BuyTicket.css"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { LanguageContext } from "../Context";
 export  default function BuyTicket(){
+  const Language=useContext(LanguageContext)
   const[token,_setToken]=useState(()=>localStorage.getItem("token")||null)
   const {id}=useParams();
    const[eventid,setEventid]=useState({});
@@ -29,7 +31,7 @@ export  default function BuyTicket(){
     localStorage.setItem("totalPrice", totalPrice);
    const handleBuy=()=>{
       if(!token){
-        alert("Vui lòng đăng nhập trước khi mua vé")
+        {Language==="vi"?alert("Vui lòng đăng nhập trước khi mua vé"):alert("Login before buy ticket ")}
       }
     }
      
@@ -38,7 +40,7 @@ export  default function BuyTicket(){
            <div className="contentbuy">
                <div className="ReturnBt" onClick={()=>navigate(-1)}>
         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="back"><path fillRule="evenodd" clipRule="evenodd" d="M8.707 3.793a1 1 0 010 1.414L4.414 9.5H18a1 1 0 110 2H4.414l4.293 4.293a1 1 0 11-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 0z" fill="#fff"></path></svg>
-               <span>Trở về</span>
+               <span>{Language==="vi"?"Trở về":"Return"}</span>
                </div>
                <div className="ticketform">
          <span className="Choseticket">Chọn vé</span>
@@ -58,7 +60,7 @@ export  default function BuyTicket(){
              <button className="quantitybt">{count}</button>
              <button disabled={disabledplus} className={disabledplus?"countdisable":"countable"}onClick={()=>handleChange(ticket.id,ticket.stock,+1)}>+</button>
            </div>: <div className="outticket">
-            Hết Vé
+            {Language==="vi"?"Hết vé":"Outstock"}
            </div>}   
            </div>
            )})}
@@ -84,7 +86,7 @@ export  default function BuyTicket(){
             </div>
             </div>
             <div className="asideprice">
-             <span>Giá vé</span>
+             <span>{Language==="vi"?"Giá vé":"Ticket Price"}</span>
              {eventid.tickets?.map((ticket)=>(
               <div key={ticket.id} className="tickettype">
              <span>{ticket.type}</span>

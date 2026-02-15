@@ -15,18 +15,19 @@ export default function Header({Setlanguage,Language}) {
   const [refresh,_setRefresh]=useState(()=>localStorage.getItem("refreshtoken")||null);
   const loginRef=useRef();
   const regisRef=useRef();
-  const formRef=useRef()
+  const formRef=useRef();
   const inputRef=useRef();
   const[showForm,setShowForm]=useState(false);
   const[querysearch,setQuerySearch]=useState("");
   const [avatarurl, setAvatarUrl] = useState("");
   const[username,setUserName]=useState("")
   useEffect(()=>{
+    if(token){
      axios.get("http://localhost:3000/users",{
       headers:{Authorization:`Bearer ${token}`}
     }).then((res)=>{setAvatarUrl(res.data.avatarUrl);
         setUserName(res.data.username)
-    })
+    })}
   },[token])
  useEffect(() => {
   function handleClickOutside(event) {
@@ -78,25 +79,28 @@ export default function Header({Setlanguage,Language}) {
                <Link to="/" className="link"> <h1>ticketbox</h1></Link>
                     <div className="search-container">
                            <img id="searchIcon" src={searchIcon} alt="search" /> 
-                        {Language==="vi"?    
-                        (<><input ref={inputRef} onChange={(e)=>setQuerySearch(e.target.value)} value={querysearch} onClick={()=>setShowForm(!showForm)} type="text" placeholder="Bạn tìm gì hôm nay?"/>
+                        
+                        <input ref={inputRef} onChange={(e)=>setQuerySearch(e.target.value)} value={querysearch} onClick={()=>setShowForm(!showForm)} type="text" placeholder={Language==="vi"?"Bạn tìm gì hôm nay":"What re you looking for?"}/>
                         <span ></span>
-                    <Link to={`/MoreConTent?title=${encodeURIComponent(querysearch)}`}> <button >Tìm kiếm</button></Link> </>): (<><input type="text" placeholder="What are you looking for?"/>
-                        <span ></span>
-                        <button style={{marginRight:"10px"}}>Search</button></>)}
+                    <Link to={`/MoreConTent?title=${encodeURIComponent(querysearch)||""}`}> <button >{Language==="vi"?"Tìm kiếm":"Search"}</button></Link>  
                     </div>
                    <div style={{display:"flex",gap:"20px",marginRight:"20px"}}>
                      <div className="eventdiv">  <button className="eventCreate">{Language==="vi"?"Tạo sự kiện":"Create event"}</button></div>
                      
-                    <div className="MyTicket">
+                  <Link to='/MyTicket' className="linkmyticket" >
+                      <div className="MyTicket">
                    <img src={ticket} alt="Myticket" />
-                <Link to='/MyTicket'><button>{Language==="vi"?"Vé của tôi":"My ticket"}</button></Link>  
+              <button>{Language==="vi"?"Vé của tôi":"My ticket"}</button>
                     </div>
+                    </Link>  
                    
                {token?
                <div className="account">
-                      <img src={!avatarurl?"https://static.ticketbox.vn/avatar.png": `http://localhost:3000/${avatarurl}`} alt="Avatar" className="sc-f9d881-2 dHUvef"></img>
-                     <div className="accounttext">{username==""?"Tài khoản":`Xin chào, ${username}`} </div> 
+                      <img src={!avatarurl?"https://static.ticketbox.vn/avatar.png": `http://localhost:3000/${avatarurl}`} alt="Avatar" className="headavatar"></img>
+                     <div className="accounttext">{!username 
+            ? (Language === "vi" ? "Tài khoản" : "Account") 
+                : (Language === "vi" ? `Xin chào, ${username}` : `Konnichiwa, ${username}`)}
+                           </div> 
                    <div className="accountform" hidden>
                 <Link className="MyLink" to="/MyTicket">    <button >
                 <svg width="20" height="20" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M0 2a2 2 0 012-2h16a2 2 0 012 2v3.172a1 1 0 01-.293.707L19 6.586a2 2 0 000 2.828l.707.707a1 1 0 01.293.707V14a2 2 0 01-2 2H2a2 2 0 01-2-2v-3.172a1 1 0 01.293-.707L1 9.414a2 2 0 000-2.828l-.707-.707A1 1 0 010 5.172V2zm18 0H2v2.757l.414.415a4 4 0 010 5.656L2 11.243V14h16v-2.757l-.414-.415a4 4 0 010-5.656L18 4.757V2zM6 6.25a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm0 3.5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" fill="#38383D"></path></svg>
@@ -119,7 +123,7 @@ export default function Header({Setlanguage,Language}) {
                      </div>)}      
                     
                     <Login setToken={setToken} ref={loginRef} registerRef={regisRef}/>
-                    <Register ref={regisRef} loginRef={loginRef}/>
+                    <Register  setToken={setToken} ref={regisRef} loginRef={loginRef}/>
                     
                     <div className="Language">
                 {Language==="vi"? <img src={vietnamIcon} alt="Vietnam" />: <img src={englishIcon} alt="English" />}   

@@ -31,7 +31,7 @@ export default function Content({title,imgSrc,baseprice,date,isPast}){
 </div>
 </div>
 {isPast&&<div className="dateexp">
-     <span>Đã diễn ra</span>
+     <span>{Language==='vi'?"Đã diễn ra":"No longer"}</span>
 </div>}
 </div>
 </>        

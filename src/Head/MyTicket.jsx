@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './MyTicket.css'
 import emptyticket from '/emptyticket.png'
-import Music1 from '/Music/img1.jpg'
 import GridContent from '../MoreContent/GridContent';
 import axios from 'axios';
+import { LanguageContext } from '../Context';
 export default function MyTicket(){
   const[order,setOrder]=useState([])
+  const Language=useContext(LanguageContext)
     const [recommend,setRecommend]=useState([])
     const[token,_setToken]=useState(()=>localStorage.getItem("token")||null)
     useEffect(() => {
@@ -22,7 +23,7 @@ export default function MyTicket(){
     },[token])
     return (
         <div className="Myticket">       
-            <div className="Mytickettitle">Vé của tôi</div>
+            <div className="Mytickettitle">{Language==='vi'?"Vé của tôi":"My Ticket"}</div>
         {order.length>0?( <div className='myticketdetail'>
        {order.map((o)=>
             <div className='mydetailcontain'>
@@ -61,7 +62,7 @@ export default function MyTicket(){
         </div>):(<>
           <div className='emptyticket'>
             <img src={emptyticket} alt="" />
-            Bạn chưa có vé nào
+            {Language==="vi"?"Bạn chưa có vé nào":"You have no ticket ^ ^"}
         </div>  
           <div style={{backgroundColor:"#27272A"}} className="Recommend">
                    <span style={{marginTop:"35px"}} >Có thể bạn cũng thích</span>
@@ -69,9 +70,7 @@ export default function MyTicket(){
                           <GridContent data={recommend}/>  
                         </div>
         </div> 
-        </> )}
-       
-        
+        </> )}       
         </div>
     )
 }

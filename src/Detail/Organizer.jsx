@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LanguageContext } from "../Context";
 
 export default function Organizer({id}){
       const[eventid,setEventid]=useState({});
+      const Language=useContext(LanguageContext)
         useEffect(()=>{
             axios.get(`http://localhost:3000/events/${id}`)
             .then(res=>setEventid(res.data))

@@ -11,9 +11,10 @@
 }
 .gridsearch strong{
     color: #54c273;
+    margin-top: 10px;
 }
 .gridsearch h3{
-    width: 200px;
+    width: 250px;
     color: white;
   height: 20px;
    font-family: Arial, Helvetica, sans-serif;

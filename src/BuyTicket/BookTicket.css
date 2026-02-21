@@ -1,9 +1,8 @@
 .BookTicket{
     position: relative;
-    min-height: 88vh;
+    min-height: 85vh;
 }
 .backgroundimg{
-    
     position: absolute;
     bottom: 0;
     width: 100%;

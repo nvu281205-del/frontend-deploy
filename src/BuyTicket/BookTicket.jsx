@@ -149,7 +149,7 @@ export default function BookTicket(){
                     <p>By proceeding the order , you agree to the 
                         General Trading Conditions
                     </p>
-                    <button onClick={handlePayment} disabled={paymentSuccess} className={`PaymentButton ${paymentSuccess ? "Success" : ""}`}>{Language==="vi"?"Thanh toán":"Payment"}</button>
+                    <button onClick={handlePayment} disabled={paymentSuccess} className={`PaymentButton ${paymentSuccess ? "Success" : ""}`}>{paymentSuccess?(Language==="vi"?"Thanh toán thành công":"Payment successful"):(Language==="vi"?"Thanh toán":"Payment")}</button>
                   </div>
             </div>
             </div>

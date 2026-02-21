@@ -32,24 +32,34 @@
     justify-content: center;
 }
 .mydetailcontain{
+    width: 100%;
     display: flex;
     position: relative;
 }
 .myticketpic img{
     border-radius: 25px;
-     width: 100%;
+     width: 425px;
     height: 100%;
 }
 .myticketinfo{
     padding: 20px;
-    width: 35%;
+    width: 45%;
     border-radius: 25px;
     background-color: rgb(56, 56, 61);
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
+.typetick{
+    width: 100%;
+    height: 30px;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    border-bottom: 1px solid rgb(45, 194, 117);
+}
 .mydetailtitle{
     width: 100%;
     height: 40px;
@@ -60,12 +70,17 @@
     font-family: sans-serif;
 }
 .mydetaildate{
+    margin-top: 40px;
     align-items: center;
     display: flex;
     gap: 3px;
 }
 .mydetaildate path{
    color: white;
+}
+.mydetaildate svg{
+    width: 20px;
+    height: 20px;
 }
 .mydetaildate span{
     color: rgb(45, 194, 117);
@@ -78,7 +93,8 @@
     gap: 3px;
 }
 .mydetaillocate svg{
-    height: 30px;
+    width: 30px;
+    height: 20px;
 }
 .mydetaillocate path{
     color:white;
@@ -99,7 +115,7 @@
   background-color: rgb(39, 39, 42);
   position: absolute;
   top: -30px;
-  left: 230px;
+  left: 242px;
   width: 60px;
   height: 60px;
   border-radius: 100%;
@@ -108,14 +124,14 @@
     background-color: rgb(39, 39, 42);
   position: absolute;
   bottom: -30px;
-  left: 230px;
+  left: 242px;
   width: 60px;
   height: 60px;
   border-radius: 100%;
 }
 .myline{
     position: absolute;
-    left: 261px;
+    left: 269px;
     height: 100%;   
 }
 .info{

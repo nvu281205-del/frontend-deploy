@@ -15,7 +15,7 @@ export default function Account(){
 
     
     useEffect(() => { 
-      if (!token) return; axios .get("http://localhost:3000/users", { 
+      if (!token) return; axios .get("https://backend-pro-sirs.onrender.com/users", { 
       headers: { Authorization: `Bearer ${token}` }, })
        .then((res) => { 
         setAvatarUrl(res.data.avatarUrl||"");
@@ -40,7 +40,7 @@ export default function Account(){
   formData.append("datebirth", datebirth);
    formData.append("gender", gender);
   try {
-   const res= await axios.post("http://localhost:3000/users/info",
+   const res= await axios.post("https://backend-pro-sirs.onrender.com/users/info",
      formData,
       {
       headers: {
@@ -59,7 +59,7 @@ export default function Account(){
                    <div className="MyProfile">{Language==="vi"?"Thông tin tài khoản":"My profile"}</div>
                    <div className='MyProfileInfo'>
                     <div className='AvatarUpload'>
-        <img src={preview?preview:!avatarurl? "https://static.ticketbox.vn/avatar.png" : `http://localhost:3000/${avatarurl}`} alt="Avatar" className="avatar"></img>
+        <img src={preview?preview:!avatarurl? "https://static.ticketbox.vn/avatar.png" : `https://backend-pro-sirs.onrender.com/${avatarurl}`} alt="Avatar" className="avatar"></img>
                     <input type="file" id="fileInput" hidden onChange={handleSelect}/>
 <svg onClick={()=>document.getElementById('fileInput').click()} width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg" className='uploadFile'><g filter="url(#camera_svg__filter0_d_20942_2896)"><rect x="4.5" width="24" height="24" rx="12" fill="#2DC275" shapeRendering="crispEdges"></rect><g clipPath="url(#camera_svg__clip0_20942_2896)" fill="#fff"><path fillRule="evenodd" clipRule="evenodd" d="M21.833 7.333c.737 0 1.334.597 1.334 1.334v8c0 .736-.597 1.333-1.334 1.333H11.167a1.333 1.333 0 01-1.334-1.333v-8c0-.737.597-1.334 1.334-1.334h2.254l.114-.227A2 2 0 0115.325 6h2.251a2 2 0 011.873 1.298l.013.035h2.371zm0 9.334v-8H19a.667.667 0 01-.624-.433l-.176-.468a.667.667 0 00-.624-.433h-2.252a.667.667 0 00-.596.369l-.298.596a.667.667 0 01-.597.369h-2.666v8h10.666z"></path><path fillRule="evenodd" clipRule="evenodd" d="M16.5 11.333a1.333 1.333 0 100 2.667 1.333 1.333 0 000-2.667zm-2.667 1.334a2.667 2.667 0 115.334 0 2.667 2.667 0 01-5.334 0z"></path><path d="M13.167 10a.667.667 0 11-1.334 0 .667.667 0 011.334 0z"></path></g></g><defs><clipPath id="camera_svg__clip0_20942_2896"><path fill="#fff" transform="translate(9.833 5.333)" d="M0 0h13.333v13.333H0z"></path></clipPath><filter id="camera_svg__filter0_d_20942_2896" x="0.5" y="0" width="32" height="32" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_20942_2896"></feBlend><feBlend in="SourceGraphic" in2="effect1_dropShadow_20942_2896" result="shape"></feBlend></filter></defs></svg>
                    </div>

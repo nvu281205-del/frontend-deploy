@@ -15,7 +15,7 @@ export default function BookTicket(){
     const[paymentSuccess,setPaymentSuccess]=useState(false);
      const[eventid,setEventid]=useState({});
     useEffect(()=>{
-        axios.get(`http://localhost:3000/events/${id}`)
+        axios.get(`https://backend-pro-sirs.onrender.com/events/${id}`)
         .then(res=>setEventid(res.data))
         .catch(err=>console.log(err))
     },[id])
@@ -36,7 +36,7 @@ export default function BookTicket(){
           payment_method:selectmethod,
         };
         try{
-            await axios.post("http://localhost:3000/orders",orderData,{
+            await axios.post("https://backend-pro-sirs.onrender.com/orders",orderData,{
                 headers:{
                     Authorization:`Bearer ${token}`
                 },

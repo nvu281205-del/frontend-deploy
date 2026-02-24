@@ -4,7 +4,7 @@ import axios from "axios";
 export default function Banner(){
     const [data,setData]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3000/events?category=Banner")
+        axios.get("https://backend-pro-sirs.onrender.com/events?category=Banner")
         .then(res=>setData(res.data))
         .catch(err=>console.log(err));
     },[])

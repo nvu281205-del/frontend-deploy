@@ -10,12 +10,12 @@ export default function MyTicket(){
     const [recommend,setRecommend]=useState([])
     const[token,_setToken]=useState(()=>localStorage.getItem("token")||null)
     useEffect(() => {
-            fetch("http://localhost:3000/events?category=Recommend")
+            fetch("https://backend-pro-sirs.onrender.com/events?category=Recommend")
               .then(res => res.json())
               .then(json => setRecommend(json));
           }, []);
     useEffect(()=>{
-        axios.get("http://localhost:3000/users/order",{
+        axios.get("https://backend-pro-sirs.onrender.com/users/order",{
           headers:{
             Authorization:`Bearer ${token}`
           }

@@ -18,13 +18,13 @@ export default function MoreContent(){
     const city=param.get('city')
 
     const fetchEvent=async (city,category)=>{
-     const res = await axios.get("http://localhost:3000/events",{
+     const res = await axios.get("https://backend-pro-sirs.onrender.com/events",{
           params:{city,category}
      });
      setData(res.data)
     }
     useEffect(()=>{
-     let url = "http://localhost:3000/events";
+     let url = "https://backend-pro-sirs.onrender.com/events";
      if (category) url += `?category=${category}`;
      else if (title) url += `?title=${title}`;
      else if(city) url+=`?city=${city}`
@@ -34,7 +34,7 @@ export default function MoreContent(){
      .then(json=>setData(json));
 },[category,title,city]);
     useEffect(() => {
-    fetch("http://localhost:3000/events?category=Recommend")
+    fetch("https://backend-pro-sirs.onrender.com/events?category=Recommend")
       .then(res => res.json())
       .then(json => setRecommend(json));
   }, []);

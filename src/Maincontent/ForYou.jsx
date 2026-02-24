@@ -8,7 +8,7 @@ export default function ForYou({titleEn,titleVi,category}){
 const Language=useContext(LanguageContext);
 const[data,setData]=useState([])
 useEffect(()=>{
-    axios.get(`http://localhost:3000/events?category=${category}`)
+    axios.get(`https://backend-pro-sirs.onrender.com/events?category=${category}`)
     .then(res=>setData(res.data))
     .catch(err=>console.log(err));
 },[category])

@@ -16,7 +16,7 @@ export default function SearchContent({ref,setShowForm}){
      const Language=useContext(LanguageContext)
      const[recommend,setRecommend]=useState([])
       useEffect(() => {
-         fetch("http://localhost:3000/events?category=Recommend")
+         fetch("https://backend-pro-sirs.onrender.com/events?category=Recommend")
            .then(res => res.json())
            .then(json => setRecommend(json));
        }, []);

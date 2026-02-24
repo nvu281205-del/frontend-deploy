@@ -22,7 +22,7 @@ export default function Schedule({id}){
         }
      }
     useEffect(()=>{
-        axios.get(`http://localhost:3000/events/${id}`)
+        axios.get(`https://backend-pro-sirs.onrender.com/events/${id}`)
         .then(res=>setEventid(res.data))
         .catch(err=>console.log(err))
     },[id])

@@ -23,7 +23,7 @@ export default function Header({Setlanguage,Language}) {
   const[username,setUserName]=useState("")
   useEffect(()=>{
     if(token){
-     axios.get("http://localhost:3000/users",{
+     axios.get("https://backend-pro-sirs.onrender.com/users",{
       headers:{Authorization:`Bearer ${token}`}
     }).then((res)=>{setAvatarUrl(res.data.avatarUrl);
         setUserName(res.data.username)
@@ -59,7 +59,7 @@ export default function Header({Setlanguage,Language}) {
           Logout()
         }
         if(decode.exp*1000<Date.now()){
-          axios.post("http://localhost:3000/auth/refresh",{
+          axios.post("https://backend-pro-sirs.onrender.com/auth/refresh",{
           refreshToken:refresh
           }
         ).then(res=>{
@@ -95,7 +95,7 @@ export default function Header({Setlanguage,Language}) {
                    
                {token?
                <div className="account">
-                      <img src={!avatarurl?"https://static.ticketbox.vn/avatar.png": `http://localhost:3000/${avatarurl}`} alt="Avatar" className="headavatar"></img>
+                      <img src={!avatarurl?"https://static.ticketbox.vn/avatar.png": `https://backend-pro-sirs.onrender.com/${avatarurl}`} alt="Avatar" className="headavatar"></img>
                      <div className="accounttext">{!username 
             ? (Language === "vi" ? "Tài khoản" : "Account") 
                 : (Language === "vi" ? `Xin chào, ${username}` : `Konnichiwa, ${username}`)}

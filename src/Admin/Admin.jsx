@@ -16,7 +16,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/orders")
+      .get("https://backend-pro-sirs.onrender.com/orders")
       .then((res) => setOrders(res.data))
       .catch((err) => console.error(err));
   }, []);

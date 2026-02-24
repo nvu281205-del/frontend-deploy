@@ -10,7 +10,7 @@ export default function ThisWeekend({category1,category2}){
   const category=date==="Weekend"?category1:category2
       const [event,setEvent]=useState([])
      useEffect(()=>{
-     axios.get(`http://localhost:3000/events?category=${category}`)
+     axios.get(`https://backend-pro-sirs.onrender.com/events?category=${category}`)
      .then(res=>setEvent(res.data))
     .catch(err=>console.log(err))
     },[category])

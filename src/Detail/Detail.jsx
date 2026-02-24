@@ -21,11 +21,12 @@ export default function Detail(){
         <Detailticket id={id}/>
         <div className='info'>
          <Organizer id={id}/>
+         <Schedule id={id}/>
           <div style={{backgroundColor:"#27272A"}} className="Recommend">
            <span style={{marginTop:"35px"}} >{Language=="vi"?"Có thể bạn cũng thích":"You certainly like it "}</span>
            <div className="recomcontent">    
                 <GridContent data={recommend}/>  
-            </div>
+          </div>
             </div>
          </div>
          

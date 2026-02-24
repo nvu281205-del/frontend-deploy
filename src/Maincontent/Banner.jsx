@@ -16,7 +16,7 @@ export default function Banner(){
     return (
         <>
          <div className='Container'>
-        <ImgVideo {...currentitem} index={mainIndex} key={currentitem.id} id={currentitem.id} position="left" setCurrentIndex={setMainIndex} datalength={data.length}/>
+        <ImgVideo {...currentitem} index={mainIndex} key={currentitem.id} id={currentitem.id} position="left" setCurrentIndex={setMainIndex} datalength={data.length} />
         <ImgVideo {...nextitem} index={mainIndex} key={nextitem.id} id={nextitem.id} position="right"  setCurrentIndex={setMainIndex} datalength={data.length}/>
         </div>
          <div className="dots">

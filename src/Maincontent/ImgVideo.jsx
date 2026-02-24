@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function ImgVideo({imgSrc, title, position,video,setCurrentIndex,index,id,datalength}){ 
     const[mute,setMute]=useState(true);
      const videoRef = useRef(null);
-      useEffect(() => {
+    useEffect(() => {
   if (videoRef.current) {
     videoRef.current.pause();
   }
@@ -17,7 +17,7 @@ export default function ImgVideo({imgSrc, title, position,video,setCurrentIndex,
     
     return (
         <>
-            <div className="ImgVideo" onMouseEnter={()=>videoRef.current.play()} onMouseLeave={() => videoRef.current.pause()}>
+            <div className="ImgVideo" onMouseEnter={()=>videoRef.current?.play()} onMouseLeave={() => videoRef.current?.pause()}>
                <div className="media">
                 <img src={imgSrc} alt={title} />  
                 <video src={video} ref={videoRef} muted ></video>

@@ -32,7 +32,6 @@ export default function Header({Setlanguage,Language}) {
  useEffect(() => {
   function handleClickOutside(event) {
     const formNode = formRef.current;
-
     if (
       formNode &&
       !formNode.contains(event.target) && // click không nằm trong form

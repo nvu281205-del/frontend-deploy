@@ -3,9 +3,24 @@ import Organizer from './Organizer'
 import './Schedule.css'
 import axios from 'axios';
 import { LanguageContext } from '../Context';
+import { Link } from 'react-router-dom';
 export default function Schedule({id}){
      const[eventid,setEventid]=useState({});
      const Language=useContext(LanguageContext)
+      function formatDate(dateString,language='vi') { 
+        const date = new Date(dateString);
+        if(language==="vi"){
+         const day = date.getDate(); 
+         const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+     return `${day} tháng ${month} năm ${year}`;
+        }else{
+           return date.toLocaleDateString("en-GB", { 
+            day: "numeric",
+            month: "long",
+            year: "numeric" });
+        }
+     }
     useEffect(()=>{
         axios.get(`http://localhost:3000/events/${id}`)
         .then(res=>setEventid(res.data))
@@ -21,9 +36,9 @@ export default function Schedule({id}){
             <div className='ScheduleDay'>
                 <div className="ScheduleDate">
                 <span>{eventid.timeRange}</span>
-                <span className='ticketday'>24 Tháng 01,2026</span>
+                <span className='ticketday'>{formatDate(eventid.date,Language)}</span>
                 </div>
-                <button>{Language==="vi"?"Mua vé ngay":"Book now"}</button>
+           <Link to={`/BuyTicket/${id}`}> <button>{Language==="vi"?"Mua vé ngay":"Book now"}</button></Link>
             </div>
             <div className="Ticketsinfo">
              <span>{Language==="vi"?"Thông tin vé":"Ticket information"}</span>
@@ -31,7 +46,7 @@ export default function Schedule({id}){
                 <div key={ticket.id} className="ticketinfo">
                 <span>{ticket.type}</span>
                 <div className="ticketprice">
-                    <span>{ticket.price}đ</span>
+                    <span>{Number(ticket.price).toLocaleString('vi-VN')}đ</span>
                 </div>
              </div>
              ))}

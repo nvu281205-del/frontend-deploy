@@ -59,8 +59,7 @@ export default function Register({loginRef,ref}){
         localStorage.setItem("token",res.data.token.access_token);
         localStorage.setItem("refreshtoken",res.data.token.refresh_token)
          ref.current.close();
-        navigate('/Account')
-        window.location.reload()
+        navigate('/Account');
         }catch(err){
             setError(err.response?.data?.message);
         }     

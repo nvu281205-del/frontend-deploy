@@ -19,9 +19,8 @@ export default function Maincontent() {
        <Section category='Music' titleEn="Music" titleVi="Nhạc sống"/>
        <Section category='TheaterAndArt' titleEn="Theater & Art" titleVi="Sân khấu và nghệ thuật"/>
        <Section category='AttAndExp' titleEn="Attraction & Experience" titleVi="Tham quan và trải nghiệm"/>
-       <Section category='Others' titleEn="Others" titleVi="Thể loại khác"/>
+       <Section category='SportAndOther' titleEn="Others" titleVi="Thể loại khác"/>
         <Cities  category='City' titleEn="Exciting Destination" titleVi="Điểm đến thú vị"/>  
-       
         </main>
         
     )

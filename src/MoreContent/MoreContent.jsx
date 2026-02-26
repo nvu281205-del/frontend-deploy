@@ -1,5 +1,5 @@
 import { useContext, useEffect,useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import Content from "../Maincontent/Content";
 import './MoreContent.css'
 import GridContent from "./GridContent";
@@ -16,6 +16,7 @@ export default function MoreContent(){
     const title=param.get('title');
     const category =param.get('category');
     const city=param.get('city')
+    const { period } = useParams();
 
     const fetchEvent=async (city,category)=>{
      const res = await axios.get("https://backend-pro-sirs.onrender.com/events",{
@@ -25,14 +26,16 @@ export default function MoreContent(){
     }
     useEffect(()=>{
      let url = "https://backend-pro-sirs.onrender.com/events";
-     if (category) url += `?category=${category}`;
+     if (period === "week") url = "https://backend-pro-sirs.onrender.com/events/week";
+    else if (period === "month") url = "https://backend-pro-sirs.onrender.com/events/month";
+    else if (category) url += `?category=${category}`;
      else if (title) url += `?title=${title}`;
      else if(city) url+=`?city=${city}`
      
      fetch(url)
      .then(res=>res.json())
      .then(json=>setData(json));
-},[category,title,city]);
+},[category,title,city,period]);
     useEffect(() => {
     fetch("https://backend-pro-sirs.onrender.com/events?category=Recommend")
       .then(res => res.json())

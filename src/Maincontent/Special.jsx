@@ -3,13 +3,13 @@ import Thumb from './Thumb.jsx'
 import { LanguageContext } from "../Context.jsx";
 import axios from "axios";
 import { Link } from "react-router-dom";
-export default function Special ({titleEn,titleVi,category}){
+export default function Special ({titleEn,titleVi}){
   const[event,setEvent]=useState([]);
    useEffect(()=>{
-     axios.get(`https://backend-pro-sirs.onrender.com/events?category=${category}`)
+     axios.get(`https://backend-pro-sirs.onrender.com/events/special`)
      .then(res=>setEvent(res.data))
     .catch(err=>console.log(err))
-    },[category])
+    },[])
       const Language=useContext(LanguageContext);
      const [thumbIndex, setThumbIndex] = useState(0);
      const VisibleThumb = event.slice(thumbIndex,thumbIndex+5);

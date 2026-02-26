@@ -34,7 +34,8 @@ function App() {
            <Navmenu></Navmenu>
           <Maincontent/> 
           </>}/>
-
+       
+       <Route path="/MoreContent/:period" element={<MoreContent/>}/>
        <Route path="/MoreContent" element={<MoreContent/>}/>
       <Route path='/Detail/:id' element={<>
            <Navmenu></Navmenu>

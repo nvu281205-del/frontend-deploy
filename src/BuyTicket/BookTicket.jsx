@@ -36,14 +36,16 @@ export default function BookTicket(){
           payment_method:selectmethod,
         };
         try{
+             alert("Đặt vé thành công!")
+            setPaymentSuccess(true);
             await axios.post("https://backend-pro-sirs.onrender.com/orders",orderData,{
                 headers:{
                     Authorization:`Bearer ${token}`
                 },
             });
             
-            alert("Đặt vé thành công!")
-            setPaymentSuccess(true);
+           
+            
         }catch(err){
          console.log(err.response?.data || err);
         }

@@ -31,28 +31,29 @@
     cursor: pointer;
     color: white;
     font-size: 14px;
+    width: 168px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .spanactive.inactive{
 color:#FFFFFF80!important;
 }
 .linecate{
-    z-index: 2;
+    z-index: 10;
     position: absolute;
     bottom: 0;
     border-radius: 100px;
     height: 3px;
-    width: 150px;
+    width: 140px;
     background-color: #2DC275;
 }
 .linecity{
     position: absolute;
-    z-index: 2;
+    z-index: 10;
     bottom: 0;
-    left: 200px;
+    left: 27%;
      border-radius: 100px;
     height: 3px;
-    width: 160px;
+    width: 150px;
     background-color: #2DC275;
 }
 .imgSearchForm{

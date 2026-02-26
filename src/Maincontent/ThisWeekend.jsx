@@ -3,17 +3,17 @@ import Content from './Content.jsx'
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { LanguageContext } from "../Context.jsx";
-export default function ThisWeekend({category1,category2}){
+export default function ThisWeekend(){
    const Language=useContext(LanguageContext);
    const[date,setDate]=useState("Weekend");
    const index=0;
-  const category=date==="Weekend"?category1:category2
       const [event,setEvent]=useState([])
      useEffect(()=>{
-     axios.get(`https://backend-pro-sirs.onrender.com/events?category=${category}`)
+      const url = date === "Weekend" ? "https://backend-pro-sirs.onrender.com/events/week" : "https://backend-pro-sirs.onrender.com/events/month";
+     axios.get(url)
      .then(res=>setEvent(res.data))
     .catch(err=>console.log(err))
-    },[category])
+    },[date])
      const eventslide=event.slice(index,index+4); 
     return (
         <>
@@ -22,7 +22,7 @@ export default function ThisWeekend({category1,category2}){
                     <span onClick={()=>setDate("Weekend")}>{Language==="vi"?"Cuối tuần này":"This weekend"}</span>
                       <span onClick={()=>setDate("Month")}>{Language==="vi"?"Tháng này":"This month"}</span>
                          <div className={date==="Month"?"greenlineM":"greenlineW"}></div> 
-      <Link to={`MoreContent?category=${category}`} className="link">
+     <Link to={date === "Weekend" ? "/MoreContent/week" : "/MoreContent/month"} className="link" >
        <div className="Detail">
         <span>{Language==="vi"?"Xem thêm":"View more"}</span>
       <span style={{fontSize:"25px",marginBottom:"5px"}}>&#8250;</span>

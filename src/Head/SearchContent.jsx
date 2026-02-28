@@ -46,9 +46,9 @@ export default function SearchContent({ref,setShowForm}){
                <img src={category2} alt="" />
                <span>"Sân khấu & Nghê Thuật"</span>
           </div>}</Link> 
-    <Link onClick={()=>setShowForm(false)} to={active==="city"?"/MoreContent?city=DL":"/MoreContent?category=Other"}>       {active==="city"? <div className="imgSearch">
+    <Link onClick={()=>setShowForm(false)} to={active==="city"?"/MoreContent?city=DL":"/MoreContent?category=Sport"}>       {active==="city"? <div className="imgSearch">
                <img src={DaLat} alt="" />
-               <span>"Dà Lạt"</span>
+               <span>"Đà Lạt"</span>
           </div>: <div className="imgSearch">
                <img src={category3} alt="" />
                <span>"Thể Thao"</span>

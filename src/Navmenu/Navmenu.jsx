@@ -5,8 +5,8 @@ import { LanguageContext } from "../Context"
 const categories = [
   { key: "Music", vi: "Nhạc sống", en: "Music" },
   { key: "TheaterAndArt", vi: "Sân khấu & Nghệ thuật", en: "Theater & Art" },
-  { key: "Other", vi: "Thể Thao", en: "Sport" },
-  { key: "SportAndOther", vi: "Khác", en: "Others" },
+  { key: "Sport", vi: "Thể Thao", en: "Sport" },
+  { key: "Other", vi: "Khác", en: "Others" },
   { key: "ResaleTicket", vi: "Vé bán lại", en: "Resale Ticket" },
 ];
 

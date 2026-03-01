@@ -59,10 +59,11 @@ export default function MyTicket(){
        
        <div  className='myticketpic'>
        <img src={o.event.imgSrc} alt="" />
-       </div>
-       <div className='mycircletop'></div>
+         <div className='mycircletop'></div>
        <div className='mycirclebottom'></div>
 <svg className='myline' width="4" height="415" viewBox="0 0 4 415" fill="none" xmlns="http://www.w3.org/2000/svg" id="vertical-dashed"><path stroke="#27272A" strokeWidth="4" strokeLinecap="round" strokeDasharray="4 10" d="M2 2v411"></path></svg>
+       </div>
+     
         </div>
          ))
         )} 

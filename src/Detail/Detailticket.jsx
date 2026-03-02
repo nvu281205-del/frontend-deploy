@@ -60,7 +60,7 @@ export default function Detailticket({id}){
         <div className="detailprice">
            <span>{Language==="vi"? "Từ ":"From "}{Number(eventid.baseprice).toLocaleString("vi-VN")}đ</span>
         </div>
-       <Link to={`/BuyTicket/${id}`}> <button className="buyticket">{Language==="vi"?"Mua vé ngay":"Book now"}</button></Link>
+       <Link to={`/BuyTicket/${id}`}><button disabled={eventid.isPast} className={`buyticket ${eventid.isPast?"ispast":""}`}>{eventid.isPast?(Language==="vi"?"Sự kiện đã diễn ra":"This event is over"):(Language==="vi"?"Mua vé ngay":"Book now")}</button></Link>
         </div>
         </div>  
        

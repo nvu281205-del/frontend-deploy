@@ -107,6 +107,7 @@
 }
 .buyticket.ispast{
     background-color: rgb(121, 125, 129);
+    cursor: not-allowed;
 }
 .buyticket:hover{
     background-color: white;

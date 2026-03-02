@@ -34,7 +34,7 @@
     color:white;
     font-family: Arial, Helvetica, sans-serif;
 }
-.ScheduleDay button {
+.btsche {
     cursor: pointer;
     padding: 8px 38px 28px 38px;
     height: 30px;
@@ -75,9 +75,13 @@ font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
 }
-.ScheduleDay button:hover {
+.btsche:hover {
     color:black;
     background-color: white;
+}
+.btsche.isPast{
+    background-color: rgb(121, 125, 129);
+    cursor: not-allowed;
 }
 .Organizer{
     margin-top: 25px;

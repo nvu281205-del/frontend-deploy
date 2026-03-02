@@ -38,7 +38,7 @@ export default function Schedule({id}){
                 <span>{eventid.timeRange}</span>
                 <span className='ticketday'>{formatDate(eventid.date,Language)}</span>
                 </div>
-           <Link to={`/BuyTicket/${id}`}> <button>{Language==="vi"?"Mua vé ngay":"Book now"}</button></Link>
+           <Link to={`/BuyTicket/${id}`}> <button disabled={eventid.isPast} className={`btsche ${eventid.isPast?"ispast":""}`}>{eventid.isPast?(Language==="vi"?"Sự kiện đã diễn ra":"This event is over"):(Language==="vi"?"Mua vé ngay":"Book now")}</button></Link>
             </div>
             <div className="Ticketsinfo">
              <span>{Language==="vi"?"Thông tin vé":"Ticket information"}</span>

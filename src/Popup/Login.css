@@ -47,6 +47,9 @@
  .form-input input {
     font-size: 15px;
     width: 320px;
+    border: none;
+    outline:none;
+    line-height: 30px;
 }
 input:-webkit-autofill {
      background-color: white !important;    

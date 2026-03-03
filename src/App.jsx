@@ -9,12 +9,12 @@ import Footer from './Footer/Footer.jsx';
 import { LanguageContext, Token } from './Context.jsx';
 import Detail from './Detail/Detail.jsx';
 import MoreContent from './MoreContent/MoreContent.jsx';
-import BookTicket from './BuyTicket/BookTicket.jsx';
 import ScrolltoTop from './ScrolltoTop.jsx';
 import MyTicket from './Head/MyTicket.jsx';
 import Account from './Head/Account.jsx';
 import BuyTicket from './BuyTicket/BuyTicket.jsx';
 import Admin from './Admin/Admin.jsx';
+import Payment from './BuyTicket/Payment.jsx';
 function App() {
   const[Language,setLanguage]=useState("vi");
   return ( 
@@ -44,7 +44,7 @@ function App() {
         </Route>
 
         <Route path='/BuyTicket/:id' element={<BuyTicket/>}></Route>
-        <Route path='/BookTicket/:id' element={<BookTicket/>}></Route>
+        <Route path='/Payment/:id' element={<Payment/>}></Route>
          <Route path='/MyTicket' element={<MyTicket/>}></Route>
          <Route path='/Account' element={<Account/>}/>        
           

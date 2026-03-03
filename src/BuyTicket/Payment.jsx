@@ -1,4 +1,4 @@
-import"./BookTicket.css"
+import"./Payment.css"
 import VNPAY from "/VNPAY.png"
 import VietQR from "/VietQR.png"
 import ZaloPay from "/ZaloPay.png"
@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { LanguageContext } from "../Context"
-export default function BookTicket(){
+export default function Payment(){
     const [selectmethod,setSelectMethod]=useState("VNPAY")
     const {id}=useParams()
     const Language=useContext(LanguageContext)

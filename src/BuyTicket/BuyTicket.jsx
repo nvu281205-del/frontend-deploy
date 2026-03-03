@@ -1,12 +1,16 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import "./BuyTicket.css"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { LanguageContext } from "../Context";
+import Login from "../Popup/Login";
+import Register from "../Popup/Register";
 export  default function BuyTicket(){
   const Language=useContext(LanguageContext)
   const[token,_setToken]=useState(()=>localStorage.getItem("token")||null)
   const {id}=useParams();
+   const loginRef=useRef();
+  const regisRef=useRef();
    const[eventid,setEventid]=useState({});
     useEffect(()=>{
         axios.get(`https://backend-pro-sirs.onrender.com/events/${id}`)
@@ -29,14 +33,19 @@ export  default function BuyTicket(){
 };
     localStorage.setItem("counts", JSON.stringify(counts));
     localStorage.setItem("totalPrice", totalPrice);
-   const handleBuy=()=>{
+    const handleBuy=()=>{
       if(!token){
-        {Language==="vi"?alert("Vui lòng đăng nhập trước khi mua vé"):alert("Login before buy ticket ")}
+        loginRef.current.showModal();
       }
+      else{
+        navigate(`/Payment/${id}`)
+      }      
     }
      
     return (
             <>  
+            <Login ref={loginRef} registerRef={regisRef}/>
+              <Register  ref={regisRef} loginRef={loginRef}/>
            <div className="contentbuy">
                <div className="ReturnBt" onClick={()=>navigate(-1)}>
         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="back"><path fillRule="evenodd" clipRule="evenodd" d="M8.707 3.793a1 1 0 010 1.414L4.414 9.5H18a1 1 0 110 2H4.414l4.293 4.293a1 1 0 11-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 0z" fill="#fff"></path></svg>
@@ -100,7 +109,7 @@ export  default function BuyTicket(){
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M22 15v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3l.879-.879a3 3 0 000-4.242L2 9V6a2 2 0 012-2h16a2 2 0 012 2v3l-.879.879a3 3 0 000 4.242L22 15zM8 10a1 1 0 011-1h6a1 1 0 110 2H9a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H9z" fill="#fff"></path></svg>
              <span>x{totalCount}</span>           
            </div>
-      <Link to={!token?`/BuyTicket/${id}`:`/BookTicket/${id}`}><button onClick={handleBuy} disabled={totalCount<=0} className={totalCount>0?"buyable":"buydisable"}>{totalCount>0?`Tiếp Tục -${(totalPrice.toLocaleString("vi-VN"))}đ`:"Vui lòng chọn vé"}</button></Link>  
+      <button onClick={handleBuy} disabled={totalCount<=0} className={totalCount>0?"buyable":"buydisable"}>{totalCount>0?`Tiếp Tục -${(totalPrice.toLocaleString("vi-VN"))}đ`:"Vui lòng chọn vé"}</button>
             </div>
             </div>  
                </div>         

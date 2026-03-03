@@ -70,7 +70,7 @@ export default function Register({loginRef,ref}){
         <form method='dialog' onSubmit={handleSubmit}>
             <div className='Register-header'>
             <span>Đăng ký tài khoản</span>
-    <button onClick={handleClose} className='Register-closebtn'> <span style={{fontSize:"14px"}}> ✖</span></button>
+    <button type='button' onClick={handleClose} className='Register-closebtn'> <span style={{fontSize:"14px"}}> ✖</span></button>
             </div>
             <div className='Register-body'>
             <div className='input'>

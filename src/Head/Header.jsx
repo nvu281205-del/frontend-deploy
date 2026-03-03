@@ -49,7 +49,7 @@ export default function Header({Setlanguage,Language}) {
    function Logout(){
     localStorage.removeItem("token");
     localStorage.removeItem("refreshtoken");
-    window.location.href="/"
+    window.location.reload();
    }
    useEffect(()=>{
     if(!token||!refresh) return;
@@ -67,7 +67,7 @@ export default function Header({Setlanguage,Language}) {
           setToken(res.data.access_token);
         }).catch(err=>{
           console.error("Refresh lỗi:",err.response?.data||err.message);
-          Logout()
+          Logout();
         })
         }
    },[token,refresh])
@@ -121,8 +121,8 @@ export default function Header({Setlanguage,Language}) {
                      <button onClick={()=>loginRef.current.showModal()}>{Language==="vi"?'Đăng ký':'Register'}</button>    
                      </div>)}      
                     
-                    <Login setToken={setToken} ref={loginRef} registerRef={regisRef}/>
-                    <Register  setToken={setToken} ref={regisRef} loginRef={loginRef}/>
+                    <Login ref={loginRef} registerRef={regisRef}/>
+                    <Register ref={regisRef} loginRef={loginRef}/>
                     
                     <div className="Language">
                 {Language==="vi"? <img src={vietnamIcon} alt="Vietnam" />: <img src={englishIcon} alt="English" />}   

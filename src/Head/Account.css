@@ -68,6 +68,11 @@
     outline: none;
     font-size: 14px;
 }
+.infoinput:disabled{
+    background-color: white;
+    color: rgb(175, 184, 201);
+    cursor: not-allowed;
+}
 .GenderField {
     display: flex;
     gap: 15px;

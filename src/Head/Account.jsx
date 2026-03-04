@@ -2,6 +2,7 @@ import axios from 'axios';
 import './Account.css'
 import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '../Context';
+import { useNavigate } from 'react-router-dom';
 export default function Account(){
     const[preview,setPreview]=useState("")
     const [token,_setToken]=useState(()=>localStorage.getItem("token")||null)
@@ -11,7 +12,8 @@ export default function Account(){
     const[phonenumber,setPhoneNumber]=useState("")
     const[datebirth,setDateBirth]=useState("")
     const[gender,setGender]=useState("")
-    const Language=useContext(LanguageContext)
+    const Language=useContext(LanguageContext);
+    const navigate=useNavigate();
 
     
     useEffect(() => { 
@@ -48,7 +50,7 @@ export default function Account(){
       },
     });
     console.log("Upload thành công:", res.data);
-    window.location.href="/";
+    navigate(-1);
   } catch (err) {
     console.error("Upload lỗi:", err.response?.data || err.message);
   }

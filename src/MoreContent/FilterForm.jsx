@@ -61,7 +61,7 @@ export default function Filterform({onApply}){
         <button onClick={()=>{setSelectedCate("Music")}} className={selectedCate === "Music" ? "categorybutton active" : "categorybutton"}>Nhạc sống</button> 
         <button onClick={()=>setSelectedCate("TheaterAndArt")} className={selectedCate === "TheaterAndArt" ? "categorybutton active" : "categorybutton"}>Sân khấu và nghệ thuật</button> 
         <button  onClick={()=>setSelectedCate("Sport")}className={selectedCate === "Sport" ? "categorybutton active" : "categorybutton"}>Thể thao</button> 
-        <button  onClick={()=>setSelectedCate("SeminarAndWorkshop")}className={selectedCate === "SeminarAndWorkshop" ? "categorybutton active" : "categorybutton"}>Hội thảo & Workshop</button> 
+        <button  onClick={()=>setSelectedCate("WorkShop")}className={selectedCate === "WorkShop" ? "categorybutton active" : "categorybutton"}>Hội thảo & Workshop</button> 
         <button  onClick={()=>setSelectedCate("AttAndExp")}className={selectedCate === "AttAndExp" ? "categorybutton active" : "categorybutton"}>Tham quan & Trải nghiệm</button> 
         <button  onClick={()=>setSelectedCate("Other")}className={selectedCate === "Other" ? "categorybutton active" : "categorybutton"}>Khác</button> 
           </div>

@@ -106,3 +106,9 @@ bottom:30%;
 .lan img{
     cursor: pointer;
 }
+@media (max-width: 768px) { 
+.multi{ 
+    gap: 30px; 
+    margin-right: 0; 
+}
+} 

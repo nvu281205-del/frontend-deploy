@@ -1,5 +1,6 @@
 .Navmenu {
     display: flex;
+    box-sizing: border-box;
     align-items: center;
     justify-content: flex-start;
     gap: 40px;

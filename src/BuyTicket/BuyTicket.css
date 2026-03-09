@@ -179,3 +179,19 @@ font-size: 12px;
     border-radius: 12px;
     background-color: rgb(255, 184, 188);;
 }
+@media (max-width: 768px) {
+    .ticketform {
+        width: 45%;
+    }
+    .infoticket {
+        width: 45%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+   .aside{
+    width: 45%;
+   }
+   .asidehead{
+    width: 90%;
+   }
+}

@@ -99,3 +99,23 @@ color:#FFFFFF80!important;
     grid-template-columns: repeat(3,1fr);
    padding: 0px 10px 0px 10px ; 
 }
+@media (max-width: 768px) {
+    .Search{
+        width: 100%;
+        left: 0;
+        top: 60px;
+        height: 400px;
+    }
+    .titleform{
+        gap: 20px;
+    }
+    .spanactive{
+        width: 120px;
+        font-size: 12px;
+    }
+    .linecity{
+        left: 20%;
+    }
+    .linecate{
+        width: 120px;
+    }

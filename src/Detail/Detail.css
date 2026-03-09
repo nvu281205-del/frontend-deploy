@@ -139,3 +139,13 @@
     padding:10px 0 0px 0px;
     background-color:rgb(2, 2, 3);
 }
+@media (max-width: 768px) {
+    .detailpic{
+        width: 750px;
+        height: 380px;
+    }
+    .line{
+        left: 41%;
+        height: 92%;
+    }
+}

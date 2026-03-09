@@ -83,7 +83,7 @@ export default function Header({Setlanguage,Language}) {
                         <span ></span>
                     <Link to={`/MoreConTent?title=${encodeURIComponent(querysearch)||""}`}> <button >{Language==="vi"?"Tìm kiếm":"Search"}</button></Link>  
                     </div>
-                   <div style={{display:"flex",gap:"20px",marginRight:"20px"}}>
+                   <div style={{display:"flex",gap:"20px",marginRight:"20px",width:"fit-content"}}>
                      <div className="eventdiv">  <button className="eventCreate">{Language==="vi"?"Tạo sự kiện":"Create event"}</button></div>
                      
                   <Link to='/MyTicket' className="linkmyticket" >

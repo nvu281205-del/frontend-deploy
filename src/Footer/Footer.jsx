@@ -56,7 +56,7 @@ export default function Footer({Language,Setlanguage}){
         <div className="rightfoot">
          <div className="ph">
         <span className="nav">{Langua.companyTitle}</span>
-        <div className="ph1" style={{display:"flex",flexDirection:"column",gap:"10px"}}>
+        <div className="ph1" style={{display:"flex",flexDirection:"column",gap:"20px"}}>
           {Langua.companyItems.map((item,i)=><span key={i}>{item}</span>
           )}
           </div>

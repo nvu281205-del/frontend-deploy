@@ -2,11 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import './Register.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-
-
 export default function Register({loginRef,ref}){
-    const navigate=useNavigate()
       const[error,setError]=useState("");
       const [password,setPassword]=useState("");
       const[confirm,setConfirm]=useState("");
@@ -59,7 +55,7 @@ export default function Register({loginRef,ref}){
         localStorage.setItem("token",res.data.token.access_token);
         localStorage.setItem("refreshtoken",res.data.token.refresh_token)
          ref.current.close();
-        navigate('/Account');
+        window.location.href = '/Account';
         }catch(err){
             setError(err.response?.data?.message);
         }     

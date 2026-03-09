@@ -236,3 +236,12 @@
 .PaymentButton:hover{
     background-color: #28a166;
 }
+@media (max-width: 768px) {
+    .BookBody{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .Payment{
+        width: 100%;
+    }
+}

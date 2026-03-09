@@ -21,3 +21,12 @@
     font-family: Arial, Helvetica, sans-serif;
     left: 10px;
 }
+@media (max-width: 768px) {
+    .cityBanner {
+        width: 100%;
+        height: auto;
+    }
+    .cityBanner span {
+        font-size: 24px;
+        bottom: 30px;
+    }

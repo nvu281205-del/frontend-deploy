@@ -139,3 +139,10 @@ margin-top: 50px;
 .city{
     margin-top: 25px;
 }
+@media (max-width: 768px) {
+    .VPBank img {
+        width: 100%;
+        height: auto;
+        margin-top: 40px;
+    }
+}

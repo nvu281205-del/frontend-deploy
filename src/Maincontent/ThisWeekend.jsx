@@ -19,8 +19,8 @@ export default function ThisWeekend(){
         <>
           <div className="ThisWeekend">
                   <div className="special-topic">
-                    <span onClick={()=>setDate("Weekend")}>{Language==="vi"?"Cuối tuần này":"This weekend"}</span>
-                      <span onClick={()=>setDate("Month")}>{Language==="vi"?"Tháng này":"This month"}</span>
+                   {<span onClick={()=>setDate("Weekend")}>{Language==="vi"?"Cuối tuần này":"This weekend"}</span>}
+                      {<span onClick={()=>setDate("Month")}>{Language==="vi"?"Tháng này":"This month"}</span>}
                          <div className={date==="Month"?"greenlineM":"greenlineW"}></div> 
      <Link to={date === "Weekend" ? "/MoreContent/week" : "/MoreContent/month"} className="link" >
        <div className="Detail">
@@ -33,6 +33,11 @@ export default function ThisWeekend(){
                      {eventslide.map((i)=>(
                 <Link className="link" to={`/Detail/${i.id}`} key={i.id}> <Content {...i}/></Link>
                       ))}
+              {event.length<4&&     <Link to={date === "Weekend" ? "/MoreContent/week" : "/MoreContent/month"} className="link" >  <div className="moreevents">
+                        Explore more events 
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.207 5.293a1 1 0 00-1.414 1.414L12.086 12l-5.293 5.293a1 1 0 101.414 1.414l6-6a1 1 0 000-1.414l-6-6z" fill="#fff"></path><path d="M13.207 5.293a1 1 0 10-1.414 1.414L17.086 12l-5.293 5.293a1 1 0 001.414 1.414l6-6a1 1 0 000-1.414l-6-6z" fill="#fff"></path></svg>
+                      </div>
+                     </Link>  }
                 </div>
                 </div>
         </>

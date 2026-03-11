@@ -41,7 +41,7 @@ const handleSubmit= async (e)=>{
          {email,password},
        { headers:{'Content-Type':'application/json'}} );
      if (res.data.role === "admin") {
-  navigate("/admin");
+  navigate("/Admin");
 } 
     ref.current.close();
     localStorage.setItem("token",res.data.access_token);

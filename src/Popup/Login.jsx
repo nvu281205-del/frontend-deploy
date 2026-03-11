@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import './Login.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import spinner from "/Loading.png"
 export default function Login({registerRef,ref}){
     const [loading, setLoading] = useState(false);
@@ -14,7 +13,6 @@ export default function Login({registerRef,ref}){
      const [passwordError,setPasswordError]=useState("");
      const [ptouched,setPtouched]=useState(false);
      const isFormValid=validemail&&email!==""&&password!==""&&!passwordError&& !emailError;
-     const navigate = useNavigate();
      function handleClose(){
         ref.current.close();
      }
@@ -40,13 +38,15 @@ const handleSubmit= async (e)=>{
   const res= await axios.post('https://backend-pro-sirs.onrender.com/auth/login',
          {email,password},
        { headers:{'Content-Type':'application/json'}} );
+       localStorage.setItem("token",res.data.access_token);
+    localStorage.setItem("refreshtoken",res.data.refresh_token);
      if (res.data.role === "admin") {
-  navigate("/Admin");
+  window.location.href = "/Admin";
 } 
+    else{
     ref.current.close();
-    localStorage.setItem("token",res.data.access_token);
-    localStorage.setItem("refreshtoken",res.data.refresh_token)
     window.location.reload();
+    }
     }catch(err){
         const msg=err.response?.data?.message;
         if(msg==="Email chưa đăng ký"){
